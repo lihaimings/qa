@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <integer name="animation_default_duration">300</integer>
+    <integer name="max_secondary_tab_adjust_num">4</integer><!--暂时设定4个，设定5个时部分tab的名字会换行，显示不正常-->
+
+    <integer name="swipe_layout_default_refresh_complete_delay_duration">2000</integer>
+    <integer name="swipe_layout_default_refresh_complete_to_default_scrolling_duration">300</integer>
+
+    <integer name="swipe_layout_default_load_more_complete_to_default_scrolling_duration">300</integer>
+</resources>

@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:gravity="center_horizontal"
+    >
+    <ImageView
+        android:id="@+id/iv_no_answer_pic"
+        android:layout_width="@dimen/x106"
+        android:layout_height="@dimen/x105"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="@dimen/x25"
+        android:src="@drawable/no_answer_pic"
+        />
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="答案正在火速赶来"
+        android:textColor="@color/color_e8e8e8"
+        android:textSize="@dimen/x10"
+        android:layout_marginTop="@dimen/x16"
+        />
+</LinearLayout>

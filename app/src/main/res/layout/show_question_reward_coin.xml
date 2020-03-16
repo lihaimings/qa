@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="wrap_content"
+    android:layout_height="wrap_content">
+    <ImageView
+        android:layout_width="@dimen/x128"
+        android:layout_height="@dimen/x36"
+        android:src="@drawable/amount_bounty_coin"
+        android:scaleType="fitXY" />
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/reward_coins"
+        android:textColor="@color/color_e8d587"
+        android:layout_marginStart="@dimen/x41"
+        android:layout_marginTop="@dimen/x11"
+        />
+</RelativeLayout>

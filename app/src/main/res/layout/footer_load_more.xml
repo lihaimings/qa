@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.youlitech.corelibrary.ui.refresh.LoadMoreFooterView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/white"
+    >
+
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="@dimen/x54"
+        android:layout_gravity="center">
+        <TextView
+            android:id="@+id/tv_load_more"
+            android:layout_width="@dimen/x150"
+            android:layout_height="wrap_content"
+            android:layout_toRightOf="@id/iv_load_more_success"
+            android:layout_marginLeft="@dimen/x10"
+            android:layout_centerVertical="true"
+            android:gravity="center"
+            android:maxLines="1"
+            android:text="@string/load_more"
+            android:textSize="@dimen/x13"
+            android:textColor="@color/black_33"/>
+
+        <ImageView
+            android:id="@+id/iv_load_more_success"
+            android:layout_width="@dimen/x30"
+            android:layout_height="@dimen/x30"
+            android:padding="@dimen/x5"
+            android:src="@drawable/ic_suc_main_color"
+            android:layout_centerVertical="true"
+            />
+
+        <pl.droidsonroids.gif.GifImageView
+            android:id="@+id/gifv_loader"
+            android:layout_width="@dimen/x30"
+            android:layout_height="@dimen/x30"
+            android:layout_centerVertical="true"
+            android:src="@drawable/gif_loader"/>
+
+    </RelativeLayout>
+</com.youlitech.corelibrary.ui.refresh.LoadMoreFooterView>

@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <LinearLayout
+        android:id="@+id/ll_top_bar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:orientation="vertical"
+        >
+    <View
+        android:id="@+id/bg_home_status_bar"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:background="@drawable/view_top_bar_bg"
+        />
+    <include layout="@layout/problem_detail_top" />
+    </LinearLayout>
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@id/ll_top_bar"
+        android:layout_above="@id/rl_reward_coin_bar"
+        android:background="@color/color_0F1621"
+        android:padding="@dimen/x13"
+        >
+        <EditText
+            android:id="@+id/et_input_question"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/x36"
+            android:background="@drawable/edit_ask_question_bg"
+            android:minEms="4"
+            android:maxEms="50"
+            android:hint="@string/question_title_hint"
+            android:textColor="@color/color_e8e8e8"
+            android:textSize="@dimen/x14"
+            android:textColorHint="@color/color_e8e8e8"
+            android:gravity="center_vertical"
+            android:layout_marginStart="@dimen/x9"
+            android:textCursorDrawable="@drawable/color_cursor"
+            />
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/x36"
+            android:src="@drawable/input_question_box"
+            android:scaleType="fitXY"
+            />
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_below="@id/et_input_question"
+            android:layout_above="@+id/iv_question_add_video"
+            android:paddingTop="@dimen/x12"
+            >
+            <EditText
+                android:id="@+id/et_input_question_description"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:hint="@string/question_description_hint"
+                android:textColorHint="@color/color_e8e8e8"
+                android:textSize="@dimen/x12"
+                android:textColor="@color/color_e8e8e8"
+                android:gravity="top"
+                android:textCursorDrawable="@drawable/color_cursor"
+                android:background="@null"
+                />
+
+
+        </ScrollView>
+
+        <ImageView
+            android:id="@+id/iv_question_add_video"
+            android:layout_width="@dimen/x60"
+            android:layout_height="@dimen/x60"
+            android:layout_alignParentBottom="true"
+            android:src="@drawable/add_video"
+           />
+
+        <ImageView
+            android:id="@+id/iv_question_add_picture"
+            android:layout_width="@dimen/x60"
+            android:layout_height="@dimen/x60"
+            android:layout_alignParentBottom="true"
+            android:layout_marginStart="@dimen/x73"
+            android:src="@drawable/add_picture"
+           />
+
+        <TextView
+            android:id="@+id/tv_how_ask_question"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentBottom="true"
+            android:text="@string/how_ask"
+            android:textColor="@color/color_5ab4f1"
+            />
+    </RelativeLayout>
+   
+
+    <LinearLayout
+            android:id="@+id/rl_reward_coin_bar"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/x42"
+            android:layout_alignParentBottom="true"
+            android:paddingStart="@dimen/x13"
+            android:background="@drawable/problem__detail_bottom_bg"
+            android:gravity="center_vertical"
+            >
+     <include layout="@layout/show_question_reward_coin"
+         />
+        </LinearLayout>
+
+</RelativeLayout>

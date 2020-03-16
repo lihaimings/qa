@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/dislike_this_q_and_a"
+    android:orientation="vertical"
+    android:layout_width="@dimen/x76"
+    android:layout_height="@dimen/x76"
+    android:background="@drawable/sort_popup_window"
+    android:gravity="center_horizontal"
+    >
+
+    <ImageView
+        android:layout_width="@dimen/x26"
+        android:layout_height="@dimen/x26"
+        android:layout_marginTop="@dimen/x18"
+        android:src="@drawable/dislike_q_and_a_heart"
+        android:scaleType="fitXY"
+
+        />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="@dimen/x9"
+        android:textColor="@color/color_f7f7f7"
+        android:text="@string/dislike"
+        android:layout_marginTop="@dimen/x4"
+        />
+</LinearLayout>

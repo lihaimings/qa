@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="draw_win_award_title_margin">@dimen/x130</dimen>
+    <dimen name="draw_win_awards_margin">@dimen/x190</dimen>
+    <dimen name="draw_no_win_award_title_margin">@dimen/x122</dimen>
+    <dimen name="draw_no_win_award_hint_margin">@dimen/x220</dimen>
+
+</resources>

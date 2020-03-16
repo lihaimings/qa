@@ -1,0 +1,47 @@
+<resources>
+
+    <string name="app_name">paper</string>
+
+    <string name="question_attention_num">%s 关注</string>
+    <string name="question_answer_num">%s 回答</string>
+    <string name="question_visit_num">%s 浏览</string>
+    <string name="remain_num">还剩%s</string>
+
+    <string name="building">施工中</string>
+    <string name="sort_way">按热度排序</string>
+    <string name="have_attention">已关注</string>
+    <string name="attention_question">关注问题</string>
+    <string name="fever">热度</string>
+    <string name="time">时间</string>
+    <string name="dislike">不喜欢</string>
+    <string name="select_tab">选择标签</string>
+    <string name="reward_coins">悬赏金币:%s</string>
+    <string name="how_ask">如何提一个好问题?</string>
+    <string name="lose_interest">不感兴趣</string>
+    <string name="question_title_hint">输入4-50字的问题并以“?”结尾</string>
+    <string name="question_description_hint">·给问题补充说明，可获得更多优质回答哦（选填）\n·悬赏金币数由系统算法生成，你可以点击修改悬赏金额</string>
+    <string name="modify_number_coins">修改悬赏金币数</string>
+    <string name="one_hundred">100</string>
+    <string name="fifty">50</string>
+    <string name="thirty">30</string>
+    <string name="ten">10</string>
+    <string name="customize_num">自定义</string>
+    <string name="good_question_description">"一个好的问题需要遵循以下几个要素：\n\n1.真实：确定问题是自己真实的疑惑\n\n2.规范：标点符号、句式书写严谨，并
+      以“?”结尾\n\n3.明确：问题包含足够的信息\n\n4.简洁：问题简洁明了，不做无用的描述"</string>
+    <string name="input_reward_coins">输入悬赏金币数</string>
+
+    <string-array name="qa_tab_titles">
+        <item>首页</item>
+        <item>最新</item>
+    </string-array>
+
+    <string name="answer">回答\n回答\n回答\n回答\n回答\n回答\n回答\n回答\n回答\n回答\n回答\n回答\n回答\n回答\n回答\n回答\n回答\n回答\n回答\n回答\n回答\n回答\n回答\n回答\n回答\n回答\n回答\n回答\n回答\n回答\n回答\n回答\n回答\n回答\n回答\n回答\n回答\n回答\n回答\n回答\n回答\n回答\n回答\n回答\n回答\n回答\n回答\n回答\n回答\n回答\n回答\n回答\n回答\n回答\n回答\n回答\n回答\n回答\n回答\n回答\n回答\n回答\n回答\n回答\n回答\n回答\n回答\n回答\n回答\n回答</string>
+
+    <string name="refresh_refreshing">正在探索新世界&#8230;</string>
+    <string name="refresh_release_to_refresh">松开后刷新</string>
+    <string name="refresh_swipe_to_refresh">下拉刷新</string>
+    <string name="refresh_complete">刷新完成</string>
+    <string name="load_more">加载更多</string>
+    <string name="pickerview_cancel">取消</string>
+    <string name="pickerview_submit">确定</string>
+</resources>

@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/cl_question_no_answer"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@drawable/answer_question_description_list_bg"
+    android:paddingHorizontal="@dimen/x11"
+    android:paddingTop="@dimen/x10"
+    android:paddingBottom="@dimen/x12"
+    >
+
+    <TextView
+        android:id="@+id/tv_problem_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="@dimen/x14"
+        android:textColor="@color/color_e8e8e8"
+        android:text="@string/building"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:textStyle="bold"
+        />
+
+    <ImageView
+        android:id="@+id/iv_dislike_btn"
+        android:layout_width="@dimen/x18"
+        android:layout_height="@dimen/x18"
+        android:padding="@dimen/x2"
+        android:src="@drawable/more_button"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        />
+</androidx.constraintlayout.widget.ConstraintLayout>

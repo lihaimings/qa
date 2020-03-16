@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.youlitech.corelibrary.ui.refresh.RefreshHeaderView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/white"
+    >
+    <RelativeLayout
+        android:id="@+id/rl_refresh_header"
+        android:layout_width="wrap_content"
+        android:layout_gravity="center"
+        android:layout_height="@dimen/x55"
+        >
+
+        <TextView
+            android:id="@+id/tv_refresh"
+            android:layout_width="@dimen/x150"
+            android:layout_height="wrap_content"
+            android:maxLines="1"
+            android:layout_centerInParent="true"
+            android:gravity="center"
+            android:layout_toRightOf="@id/iv_refresh_success"
+            android:layout_marginLeft="@dimen/x10"
+            android:text="@string/refresh_refreshing"
+            android:textSize="@dimen/x13"
+            android:textColor="@color/black_33"/>
+        <ImageView
+            android:id="@+id/iv_refresh_success"
+            android:layout_width="@dimen/x30"
+            android:layout_height="@dimen/x30"
+            android:padding="@dimen/x5"
+            android:src="@drawable/ic_suc_main_color"
+            android:layout_centerVertical="true" />
+
+        <pl.droidsonroids.gif.GifImageView
+            android:id="@+id/gifv_loader"
+            android:layout_width="@dimen/x30"
+            android:layout_height="@dimen/x30"
+            android:layout_centerVertical="true"
+            android:src="@drawable/gif_loader"
+            />
+
+    </RelativeLayout>
+</com.youlitech.corelibrary.ui.refresh.RefreshHeaderView>

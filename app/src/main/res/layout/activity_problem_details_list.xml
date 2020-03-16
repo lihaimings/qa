@@ -1,0 +1,143 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/problem_detail_list_bg"
+    >
+  <LinearLayout
+      android:id="@+id/problem_bar"
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:orientation="vertical"
+      >
+      <View
+          android:id="@+id/bg_home_status_bar"
+          android:layout_width="match_parent"
+          android:layout_height="0dp"
+          android:background="@drawable/view_top_bar_bg"
+          />
+      <include layout="@layout/problem_detail_top" />
+  </LinearLayout>
+    <ScrollView
+        android:id="@+id/scroll_view"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@id/problem_bar"
+        android:layout_above="@id/problem_bottom"
+        android:nestedScrollingEnabled="false"
+
+        >
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:paddingStart="@dimen/x13"
+            android:paddingEnd="@dimen/x13"
+            >
+            <TextView
+                android:id="@+id/tv_problem_title"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/x15"
+                android:textSize="@dimen/x16"
+                android:textColor="@color/color_e8e8e8"
+                android:text="女朋友过生日送什么礼物好？"
+                android:layout_gravity="center_vertical"
+                />
+            <ImageView
+                android:id="@+id/iv_problem_description_pic"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:visibility="gone"
+                />
+
+            <cn.jzvd.JzvdStd
+                android:id="@+id/problem_description_video"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:visibility="gone"
+                />
+            <TextView
+                android:id="@+id/tv_problem_description"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/x8"
+                android:text="还有不到一个月就到了。有什么主意呢？ 不要衣服鞋子之类的。 要有创意阿，求主意"
+                android:textColor="@color/color_e8e8e8"
+                android:textSize="@dimen/x10"
+                />
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:orientation="horizontal"
+                android:layout_marginTop="@dimen/x8"
+                >
+                <TextView
+                    android:id="@+id/tv_question_attention_num"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="@dimen/x10"
+                    android:textColor="@color/color_e8e8e8"
+                    android:text="3110 关注" />
+                <TextView
+                    android:id="@+id/tv_question_answer_num"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="@dimen/x10"
+                    android:textColor="@color/color_e8e8e8"
+                    android:text="882 回答"
+                    android:layout_marginLeft="@dimen/x10"
+                    />
+                <TextView
+                    android:id="@+id/tv_question_visit_num"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="@dimen/x10"
+                    android:textColor="@color/color_e8e8e8"
+                    android:text="3110 浏览"
+                    android:layout_marginLeft="@dimen/x10"
+                    />
+                </LinearLayout>
+
+           <LinearLayout
+               android:layout_width="match_parent"
+               android:layout_height="wrap_content"
+               android:gravity="left"
+               android:orientation="vertical"
+               android:layout_marginTop="@dimen/x13" >
+               <include layout="@layout/answer_question_coin_reward" />
+           </LinearLayout>
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <FrameLayout
+                    android:id="@+id/have_answer"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+                      <include layout="@layout/problem_detail_have_answer" />
+                </FrameLayout>
+                <FrameLayout
+                    android:id="@+id/no_answer"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:visibility="gone">
+                    <include  layout="@layout/problem_detail_no_answer"  />
+                </FrameLayout>
+            </RelativeLayout>
+            <include  layout="@layout/problem_detail_no_answer"  />
+            <include  layout="@layout/problem_detail_no_answer"  />
+            
+            </LinearLayout>
+
+    </ScrollView>
+<FrameLayout
+    android:id="@+id/problem_bottom"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+   android:layout_alignParentBottom="true"
+    >
+    <include layout="@layout/problem_detail_bottom" />
+</FrameLayout>
+</RelativeLayout>
