@@ -1,21 +1,25 @@
 package com.haiming.paper.Utils;
 
 import android.content.Context;
+import android.database.sqlite.SQLiteDatabase;
+
+import com.haiming.paper.db.DaoMaster;
+import com.haiming.paper.db.DaoSession;
 
 public class GreendaoUtils {
     private static GreendaoUtils mInstance;
     private GreendaoUtils(){
-
 
     }
 
     /**
      * 双重检测锁
      */
-    public static GreendaoUtils getInstance(){
+    public static GreendaoUtils newInstance(Context context){
         if (mInstance==null){
             synchronized(GreendaoUtils.class){
                 if (mInstance==null){
+                    initGreenDao(context);
                     mInstance=new GreendaoUtils();
                 }
             }
@@ -26,22 +30,17 @@ public class GreendaoUtils {
     /**
      * 初始化GreenDao，直接在Application中进行初始化操作
      */
-    public void initGreenDao(Context context){
-
-
-
-
-//        //创建daomaster
-//        DaoMaster.DevOpenHelper helper = new DaoMaster.DevOpenHelper(context,);
-//        SQLiteDatabase db = helper.getWritableDatabase();//db读写数据库
-//        DaoMaster daoMaster = new DaoMaster(db);
-//
-//        //创建daosession
-//        daoSession = daoMaster.newSession();
+    public static void initGreenDao(Context context){
+        //创建daomaster
+        DaoMaster.DevOpenHelper helper = new DaoMaster.DevOpenHelper(context,"store.db");
+        SQLiteDatabase db = helper.getWritableDatabase();//db读写数据库
+        DaoMaster daoMaster = new DaoMaster(db);
+        //创建daosession
+        daoSession = daoMaster.newSession();
     }
 
-//    private DaoSession daoSession;
-//    public DaoSession getDaoSession(){
-//        return daoSession;
-//    }
+    private static DaoSession daoSession;
+    public DaoSession getDaoSession(){
+        return daoSession;
+    }
 }

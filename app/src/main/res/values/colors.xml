@@ -94,6 +94,7 @@
     <color name="yellow_level_bg">#F7B850</color>
     <color name="translate">#0000</color>
     <color name="dark">#1F1F1F</color>
+    <color name="colorD2D2D2">#D2D2D2</color>
     <color name="line">@color/bg_gray</color>
     <color name="main_color_line">#F9E5B6</color>
     <color name="default_bg">@color/white_F2</color>
@@ -213,6 +214,9 @@
     <color name="colorFEFBFB">#FEFBFB</color>
     <color name="colorFF4F4F">#FF4F4F</color>
     <color name="color008FEB">#008FEB</color>
+    <color name="color08BF04">#08BF04</color>
+    <color name="color07BE05">#07BE05</color>
+    <color name="color454545">#454545</color>
     <color name="color80000000">#80000000</color>
     <color name="color50000000">#50000000</color>
     <color name="colorF7F7F7">#F7F7F7</color>
@@ -307,6 +311,8 @@
     <color name="colorFFFFFFFF">#B4FFFFFF</color>
 
     <color name="color8B9CAD">#8B9CAD</color>
+    <color name="color3799EA">#3799EA</color>
+    <color name="color3B98EF">#3B98EF</color>
     <color name="colorC23447">#C23447</color>
     <color name="colorDDB44E">#DDB44E</color>
     <color name="color747375">#747375</color>

@@ -7,6 +7,8 @@ import android.os.Looper;
 
 
 import com.haiming.paper.Utils.CommonUtil;
+import com.haiming.paper.Utils.GreendaoUtils;
+import com.haiming.paper.db.DaoSession;
 
 
 /**
@@ -22,6 +24,8 @@ public class BaseApplication extends Application {
     private static Looper mMainLooper;
     private static Handler mMainHandler;
     private static String intentUrl;
+    private static GreendaoUtils  mGreendaoUtils;
+    private static DaoSession mDaoSession;
 
     private String processName;
 
@@ -58,6 +62,10 @@ public class BaseApplication extends Application {
         mMainLooper = getMainLooper();
         mMainHandler = new Handler();
         processName = CommonUtil.getProcessName(this);
+
+        mGreendaoUtils =  GreendaoUtils.newInstance(this);
+        mDaoSession = mGreendaoUtils.getDaoSession();
+
     }
 
 

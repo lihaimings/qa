@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/colorF6F6F6"
+    >
+
+    <ImageView
+        android:id="@+id/login_iv"
+        android:layout_width="@dimen/x100"
+        android:layout_height="@dimen/x100"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="@dimen/x60"
+        android:src="@drawable/dog"
+        />
+
+
+    <LinearLayout
+        android:id="@+id/login_ll"
+        android:background="@drawable/login_ll_bg"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_marginHorizontal="@dimen/x15"
+        android:layout_below="@id/login_iv"
+        android:layout_marginTop="@dimen/x23"
+        >
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+
+        >
+        <ImageView
+            android:layout_width="@dimen/x40"
+            android:layout_height="@dimen/x40"
+            android:src="@drawable/login_people"
+            android:layout_gravity="center_vertical"
+            android:scaleType="centerInside"
+            />
+        <EditText
+            android:id="@+id/account_number_et"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/x50"
+            android:background="@null"
+            android:textCursorDrawable="@null"
+            android:hint="用户账号"
+            android:gravity="center_vertical"
+            />
+    </LinearLayout>
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/x1"
+            android:background="@color/colorD2D2D2"
+            />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+
+            >
+            <ImageView
+                android:layout_width="@dimen/x40"
+                android:layout_height="@dimen/x40"
+                android:src="@drawable/sock"
+                android:layout_gravity="center_vertical"
+                android:scaleType="centerInside"
+                />
+            <EditText
+                android:id="@+id/password_number_et"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/x50"
+                android:background="@null"
+                android:textCursorDrawable="@null"
+                android:hint="登陆密码"
+                android:gravity="center_vertical"
+                android:inputType="textPassword"
+                />
+        </LinearLayout>
+
+    </LinearLayout>
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/x50"
+        android:layout_below="@id/login_ll"
+        android:layout_marginTop="@dimen/x13"
+        android:background="@drawable/login_input_btn_bg"
+        android:text="登陆"
+        android:textSize="@dimen/x18"
+        android:gravity="center"
+        android:layout_marginHorizontal="@dimen/x15"
+        android:textColor="@color/white"
+        />
+
+
+
+</RelativeLayout>
