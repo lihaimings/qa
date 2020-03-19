@@ -5,7 +5,10 @@ import android.os.Bundle;
 import android.view.View;
 import android.view.Window;
 import android.widget.Button;
+import android.widget.CheckBox;
+import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.haiming.paper.R;
 import com.haiming.paper.Utils.UIUtil;
@@ -18,15 +21,17 @@ import butterknife.OnClick;
 
 public class LoginRegisterActivity extends BaseActivity {
 
+    private ImageView mClose;
     private Button loginBtn;
     private Button registerBtn;
+    private CheckBox mCheckBox;
     private Intent mIntent;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        setContentView(R.layout.begin);
+        setContentView(R.layout.login_and_register_activity);
 
         initView();
     }
@@ -34,6 +39,7 @@ public class LoginRegisterActivity extends BaseActivity {
 
 
     private void initView() {
+        mClose = findViewById(R.id.iv_back);
         loginBtn = findViewById(R.id.login_btn);
         registerBtn = findViewById(R.id.register_btn);
 
@@ -48,8 +54,11 @@ public class LoginRegisterActivity extends BaseActivity {
         });
 
         registerBtn.setOnClickListener(v -> {
+
             clickView(registerBtn,2);
         });
+
+        mClose.setOnClickListener(V->finish());
     }
 
     public void clickView(Button view,int tag){

@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+    <ImageView
+        android:layout_width="@dimen/x12"
+        android:layout_height="@dimen/x12"
+        android:layout_gravity="center_vertical"
+        android:src="@drawable/ic_login_custom_service"/>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/x3"
+        android:text="帮助"
+        android:textSize="@dimen/x11"
+        android:textColor="@color/colorE4E4E4"/>
+</LinearLayout>

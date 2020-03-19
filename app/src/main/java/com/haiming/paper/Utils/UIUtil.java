@@ -8,10 +8,12 @@ import android.provider.Settings;
 import android.util.DisplayMetrics;
 import android.view.Display;
 import android.view.WindowManager;
+import android.widget.Toast;
 
 import com.haiming.paper.application.BaseApplication;
 
 import java.lang.reflect.Method;
+import java.util.List;
 
 import androidx.core.content.ContextCompat;
 
@@ -23,6 +25,9 @@ import androidx.core.content.ContextCompat;
 
 public class UIUtil {
 
+    private static int sScreenW;
+    private static int sScreenH;
+    private static float sScreenDensity;
     public static Context getContext() {
         return BaseApplication.getContext();
     }
@@ -59,6 +64,14 @@ public class UIUtil {
         return ContextCompat.getDrawable(getContext(),resId);
     }
 
+    public static boolean isListBlank(List list) {
+        return (list == null) || (list.size() <= 0);
+    }
+
+    public static void showToast(Context context,String string){
+        Toast.makeText(context,string,Toast.LENGTH_SHORT).show();
+    }
+
     public static Handler getMainHandler() {
         return BaseApplication.getmMainHandler();
     }
@@ -74,6 +87,88 @@ public class UIUtil {
     public static String getDeviceId(){
         return Settings.Secure.getString(getContext().getContentResolver(),
                 Settings.Secure.ANDROID_ID);
+    }
+
+    public static int getScreenW(Context context) {
+        if (sScreenW == 0) {
+            initScreen(context);
+        }
+        return sScreenW;
+    }
+
+    public static int getScreenH(Context context) {
+        if (sScreenH == 0) {
+            initScreen(context);
+        }
+        return sScreenH;
+    }
+
+    public static float getScreenDensity(Context context) {
+        if (sScreenDensity == 0) {
+            initScreen(context);
+        }
+        return sScreenDensity;
+    }
+
+    private static void initScreen(Context context) {
+        try {
+            DisplayMetrics metric = context.getResources().getDisplayMetrics();
+            sScreenW = metric.widthPixels;
+            sScreenH = metric.heightPixels;
+            sScreenDensity = metric.density;
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    /**
+     * 根据手机的分辨率从 dp 的单位 转成为 px(像素)
+     */
+    public static int dp2px(Context context, float dpValue) {
+        return (int) (dpValue * getScreenDensity(context) + 0.5f);
+    }
+
+    /**
+     * 根据手机的分辨率从 px(像素) 的单位 转成为 dp
+     */
+    public static int px2dp(Context context, float pxValue) {
+        return (int) (pxValue / getScreenDensity(context) + 0.5f);
+    }
+
+    /**
+     * 将px值转换为sp值，保证文字大小不变
+     *
+     * @param pxValue （DisplayMetrics类中属性scaledDensity）
+     */
+    public static int px2sp(Context context, float pxValue) {
+        final float fontScale = context.getResources().getDisplayMetrics().scaledDensity;
+        return (int) (pxValue / fontScale + 0.5f);
+    }
+
+    /**
+     * 将sp值转换为px值，保证文字大小不变
+     *
+     * @param spValue （DisplayMetrics类中属性scaledDensity）
+     */
+    public static int sp2px(Context context, float spValue) {
+        final float fontScale = context.getResources().getDisplayMetrics().scaledDensity;
+        return (int) (spValue * fontScale + 0.5f);
+    }
+
+    /**
+     * 根据手机的分辨率从 dp 的单位 转成为 px(像素)
+     */
+    public static int dip2px(Context context, float dpValue) {
+        final float scale = context.getResources().getDisplayMetrics().density;
+        return (int) (dpValue * scale + 0.5f);
+    }
+
+    /**
+     * 根据手机的分辨率从 px(像素) 的单位 转成为 dp
+     */
+    public static int px2dip(Context context, float pxValue) {
+        final float scale = context.getResources().getDisplayMetrics().density;
+        return (int) (pxValue / scale + 0.5f);
     }
 
     /**
