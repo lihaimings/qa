@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<shape xmlns:android="http://schemas.android.com/apk/res/android"
+    android:shape="oval">
+
+    <!-- 边缘线条颜色 -->
+    <stroke
+        android:width="@dimen/dimen_1dp"
+        android:color="@color/color_c1" />
+
+</shape>

@@ -1,0 +1,481 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <style name="font_36sp_red500">
+        <item name="android:textColor">@color/color_red500</item>
+        <item name="android:textSize">36sp</item>
+    </style>
+
+    <style name="font_36sp_white">
+        <item name="android:textColor">@color/color_white</item>
+        <item name="android:textSize">36sp</item>
+    </style>
+
+    <style name="font_24sp_bold_grey900">
+        <item name="android:textColor">@color/color_grey900</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textSize">24sp</item>
+        <item name="android:lineSpacingExtra">6dp</item>
+    </style>
+
+    <style name="font_24sp_bold_red500">
+        <item name="android:textColor">@color/color_red500</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textSize">24sp</item>
+        <item name="android:lineSpacingExtra">6dp</item>
+    </style>
+
+    <style name="font_22sp_bold_grey900">
+        <item name="android:textColor">@color/color_grey900</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textSize">22sp</item>
+        <item name="android:lineSpacingExtra">5.5dp</item>
+    </style>
+
+    <style name="font_20sp_bold_grey900">
+        <item name="android:textColor">@color/color_grey900</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textSize">20sp</item>
+        <item name="android:lineSpacingExtra">5dp</item>
+    </style>
+
+    <style name="font_19sp_bold_grey900">
+        <item name="android:textColor">@color/color_grey900</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textSize">19sp</item>
+        <item name="android:lineSpacingExtra">4.5dp</item>
+    </style>
+
+    <style name="font_18sp_bold_grey900">
+        <item name="android:textColor">@color/color_grey900</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textSize">18sp</item>
+        <item name="android:lineSpacingExtra">4.5dp</item>
+    </style>
+
+    <style name="font_18sp_bold_white_grey900">
+        <item name="android:textColor">@drawable/white_grey900_selector</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textSize">18sp</item>
+        <item name="android:lineSpacingExtra">4.5dp</item>
+    </style>
+
+    <style name="font_17sp_bold_grey900">
+        <item name="android:textColor">@color/color_grey900</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textSize">17sp</item>
+        <item name="android:lineSpacingExtra">4dp</item>
+    </style>
+
+    <style name="font_17sp_bold_red500">
+        <item name="android:textColor">@color/color_red500</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textSize">17sp</item>
+        <item name="android:lineSpacingExtra">4dp</item>
+    </style>
+
+    <style name="font_17sp_grey900">
+        <item name="android:textColor">@color/color_grey900</item>
+        <item name="android:textSize">17sp</item>
+        <item name="android:lineSpacingExtra">4dp</item>
+    </style>
+
+    <style name="font_17sp_grey700">
+        <item name="android:textColor">@color/color_grey700</item>
+        <item name="android:textSize">17sp</item>
+        <item name="android:lineSpacingExtra">4dp</item>
+    </style>
+
+    <style name="font_16sp_grey900">
+        <item name="android:textColor">@color/color_grey900</item>
+        <item name="android:textSize">16sp</item>
+        <item name="android:lineSpacingExtra">4dp</item>
+    </style>
+
+    <style name="font_16sp_red500">
+        <item name="android:textColor">@color/color_red500</item>
+        <item name="android:textSize">16sp</item>
+        <item name="android:lineSpacingExtra">4dp</item>
+    </style>
+
+    <style name="font_16sp_grey800">
+        <item name="android:textColor">@color/color_grey800</item>
+        <item name="android:textSize">16sp</item>
+        <item name="android:lineSpacingExtra">4dp</item>
+    </style>
+
+    <style name="font_16sp_white">
+        <item name="android:textColor">@color/color_white</item>
+        <item name="android:textSize">16sp</item>
+        <item name="android:lineSpacingExtra">4dp</item>
+    </style>
+
+    <style name="font_16sp_bold_grey900">
+        <item name="android:textColor">@color/color_grey900</item>
+        <item name="android:textSize">16sp</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:lineSpacingExtra">4dp</item>
+    </style>
+
+    <style name="font_16sp_bold_white">
+        <item name="android:textColor">@color/color_white</item>
+        <item name="android:textSize">16sp</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:lineSpacingExtra">4dp</item>
+    </style>
+
+    <style name="font_16sp_bold_white_grey600">
+        <item name="android:textColor">@drawable/white_grey600_selector</item>
+        <item name="android:textSize">16sp</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:lineSpacingExtra">4dp</item>
+    </style>
+
+    <style name="font_16sp_grey900_grey700">
+        <item name="android:textColor">@drawable/grey900_grey700_selector</item>
+        <item name="android:textSize">16sp</item>
+        <item name="android:lineSpacingExtra">4dp</item>
+    </style>
+
+    <style name="font_16sp_grey700_grey900">
+        <item name="android:textColor">@drawable/grey700_grey900_selector</item>
+        <item name="android:textSize">16sp</item>
+        <item name="android:lineSpacingExtra">4dp</item>
+    </style>
+
+
+    <style name="font_15sp_red500_grey700">
+        <item name="android:textColor">@drawable/red500_grey700_selector</item>
+        <item name="android:textSize">15sp</item>
+        <item name="android:lineSpacingExtra">3.5dp</item>
+    </style>
+
+    <style name="font_15sp_red500_white">
+        <item name="android:textColor">@drawable/red500_white_selector</item>
+        <item name="android:textSize">15sp</item>
+        <item name="android:lineSpacingExtra">3.5dp</item>
+    </style>
+
+    <style name="font_15sp_bold_grey900">
+        <item name="android:textColor">@color/color_grey900</item>
+        <item name="android:textSize">15sp</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:lineSpacingExtra">3.5dp</item>
+    </style>
+
+    <style name="font_15sp_bold_grey600">
+        <item name="android:textColor">@color/color_grey600</item>
+        <item name="android:textSize">15sp</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:lineSpacingExtra">3.5dp</item>
+    </style>
+
+    <style name="font_15sp_bold_white">
+        <item name="android:textColor">@color/color_white</item>
+        <item name="android:textSize">15sp</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:lineSpacingExtra">3.5dp</item>
+    </style>
+
+    <style name="font_15sp_grey900">
+        <item name="android:textColor">@color/color_grey900</item>
+        <item name="android:textSize">15sp</item>
+        <item name="android:lineSpacingExtra">3.5dp</item>
+    </style>
+
+    <style name="font_15sp_grey800">
+        <item name="android:textColor">@color/color_grey800</item>
+        <item name="android:textSize">15sp</item>
+        <item name="android:lineSpacingExtra">3.5dp</item>
+    </style>
+
+    <style name="font_15sp_red500">
+        <item name="android:textColor">@color/color_red500</item>
+        <item name="android:textSize">15sp</item>
+        <item name="android:lineSpacingExtra">3.5dp</item>
+    </style>
+
+    <style name="font_15sp_white">
+        <item name="android:textColor">@color/color_white</item>
+        <item name="android:textSize">15sp</item>
+        <item name="android:lineSpacingExtra">3.5dp</item>
+    </style>
+
+    <style name="font_14sp_bold_grey900">
+        <item name="android:textColor">@color/color_grey900</item>
+        <item name="android:textSize">14sp</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:lineSpacingExtra">4dp</item>
+    </style>
+
+    <style name="font_14sp_bold_white">
+        <item name="android:textColor">@color/color_white</item>
+        <item name="android:textSize">14sp</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:lineSpacingExtra">4dp</item>
+    </style>
+
+    <style name="font_14sp_bold_red500">
+        <item name="android:textColor">@color/color_red500</item>
+        <item name="android:textSize">14sp</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:lineSpacingExtra">4dp</item>
+    </style>
+
+    <style name="font_14sp_grey900">
+        <item name="android:textColor">@color/color_grey900</item>
+        <item name="android:textSize">14sp</item>
+        <item name="android:lineSpacingExtra">3.5dp</item>
+    </style>
+
+    <style name="font_14sp_red500">
+        <item name="android:textColor">@color/color_red500</item>
+        <item name="android:textSize">14sp</item>
+        <item name="android:lineSpacingExtra">3.5dp</item>
+    </style>
+
+    <style name="font_14sp_white">
+        <item name="android:textColor">@color/color_white</item>
+        <item name="android:textSize">14sp</item>
+        <item name="android:lineSpacingExtra">3.5dp</item>
+    </style>
+
+    <style name="font_14sp_grey700">
+        <item name="android:textColor">@color/color_grey700</item>
+        <item name="android:textSize">14sp</item>
+        <item name="android:lineSpacingExtra">3.5dp</item>
+    </style>
+
+    <style name="font_14sp_grey800">
+        <item name="android:textColor">@color/color_grey800</item>
+        <item name="android:textSize">14sp</item>
+        <item name="android:lineSpacingExtra">3.5dp</item>
+    </style>
+
+
+    <style name="font_14sp_yellow500">
+        <item name="android:textColor">@color/color_yellow500</item>
+        <item name="android:textSize">14sp</item>
+        <item name="android:lineSpacingExtra">3.5dp</item>
+    </style>
+
+    <style name="font_14sp_red500_grey700">
+        <item name="android:textColor">@drawable/red500_grey700_selector</item>
+        <item name="android:textSize">14sp</item>
+        <item name="android:lineSpacingExtra">3.5dp</item>
+    </style>
+
+    <style name="font_14sp_grey900_grey700">
+        <item name="android:textColor">@drawable/grey900_grey700_selector</item>
+        <item name="android:textSize">14sp</item>
+        <item name="android:lineSpacingExtra">3.5dp</item>
+    </style>
+
+    <style name="font_13sp_red500_grey700">
+        <item name="android:textColor">@drawable/red500_grey700_selector</item>
+        <item name="android:textSize">13sp</item>
+        <item name="android:lineSpacingExtra">3.5dp</item>
+    </style>
+
+    <style name="font_13sp_bold_red500">
+        <item name="android:textColor">@color/color_red500</item>
+        <item name="android:textSize">13sp</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:lineSpacingExtra">3.5dp</item>
+    </style>
+
+    <style name="font_13sp_bold_grey900">
+        <item name="android:textColor">@color/color_grey900</item>
+        <item name="android:textSize">13sp</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:lineSpacingExtra">3.5dp</item>
+    </style>
+
+    <style name="font_13sp_white">
+        <item name="android:textColor">@color/color_white</item>
+        <item name="android:textSize">13sp</item>
+        <item name="android:lineSpacingExtra">3.5dp</item>
+    </style>
+
+    <style name="font_13sp_grey900">
+        <item name="android:textColor">@color/color_grey900</item>
+        <item name="android:textSize">13sp</item>
+        <item name="android:lineSpacingExtra">3.5dp</item>
+    </style>
+
+    <style name="font_13sp_grey800">
+        <item name="android:textColor">@color/color_grey800</item>
+        <item name="android:textSize">13sp</item>
+        <item name="android:lineSpacingExtra">3.5dp</item>
+    </style>
+
+    <style name="font_13sp_grey700">
+        <item name="android:textColor">@color/color_grey700</item>
+        <item name="android:textSize">13sp</item>
+        <item name="android:lineSpacingExtra">3.5dp</item>
+    </style>
+
+    <style name="font_12sp_bold_white">
+        <item name="android:textColor">@color/color_white</item>
+        <item name="android:textSize">12sp</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:lineSpacingExtra">3dp</item>
+    </style>
+
+    <style name="font_12sp_bold_red500">
+        <item name="android:textColor">@color/color_red500</item>
+        <item name="android:textSize">12sp</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:lineSpacingExtra">3dp</item>
+    </style>
+
+
+    <style name="font_12sp_bold_blue500">
+        <item name="android:textColor">@color/color_blue500</item>
+        <item name="android:textSize">12sp</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:lineSpacingExtra">3dp</item>
+    </style>
+
+    <style name="font_12sp_red500">
+        <item name="android:textColor">@color/color_red500</item>
+        <item name="android:textSize">12sp</item>
+        <item name="android:lineSpacingExtra">3dp</item>
+    </style>
+
+    <style name="font_12sp_grey900">
+        <item name="android:textColor">@color/color_grey900</item>
+        <item name="android:textSize">12sp</item>
+        <item name="android:lineSpacingExtra">3dp</item>
+    </style>
+
+    <style name="font_12sp_green800">
+        <item name="android:textColor">@color/color_green800</item>
+        <item name="android:textSize">12sp</item>
+        <item name="android:lineSpacingExtra">3dp</item>
+    </style>
+
+    <style name="font_12sp_grey800">
+        <item name="android:textColor">@color/color_grey800</item>
+        <item name="android:textSize">12sp</item>
+        <item name="android:lineSpacingExtra">3dp</item>
+    </style>
+
+    <style name="font_12sp_grey700">
+        <item name="android:textColor">@color/color_grey700</item>
+        <item name="android:textSize">12sp</item>
+        <item name="android:lineSpacingExtra">3dp</item>
+    </style>
+
+    <style name="font_12sp_white">
+        <item name="android:textColor">@color/color_white</item>
+        <item name="android:textSize">12sp</item>
+        <item name="android:lineSpacingExtra">3dp</item>
+    </style>
+
+    <style name="font_12sp_blue500">
+        <item name="android:textColor">@color/color_blue500</item>
+        <item name="android:textSize">12sp</item>
+        <item name="android:lineSpacingExtra">3dp</item>
+    </style>
+
+    <style name="font_12sp_red500_white">
+        <item name="android:textColor">@drawable/red500_white_selector</item>
+        <item name="android:textSize">12sp</item>
+        <item name="android:lineSpacingExtra">3dp</item>
+    </style>
+
+    <style name="font_12sp_red500_grey700">
+        <item name="android:textColor">@drawable/red500_grey700_selector</item>
+        <item name="android:textSize">12sp</item>
+        <item name="android:lineSpacingExtra">3dp</item>
+    </style>
+
+    <style name="font_11sp_bold_white">
+        <item name="android:textColor">@color/color_white</item>
+        <item name="android:textSize">11sp</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:lineSpacingExtra">3dp</item>
+    </style>
+
+    <style name="font_11sp_grey900">
+        <item name="android:textColor">@color/color_grey900</item>
+        <item name="android:textSize">11sp</item>
+        <item name="android:lineSpacingExtra">3dp</item>
+    </style>
+
+    <style name="font_11sp_grey800">
+        <item name="android:textColor">@color/color_grey800</item>
+        <item name="android:textSize">11sp</item>
+        <item name="android:lineSpacingExtra">3dp</item>
+    </style>
+
+    <style name="font_11sp_grey700">
+        <item name="android:textColor">@color/color_grey700</item>
+        <item name="android:textSize">11sp</item>
+        <item name="android:lineSpacingExtra">3dp</item>
+    </style>
+
+    <style name="font_11sp_yellow500">
+        <item name="android:textColor">@color/color_yellow500</item>
+        <item name="android:textSize">11sp</item>
+        <item name="android:lineSpacingExtra">3dp</item>
+    </style>
+
+    <style name="font_11sp_white">
+        <item name="android:textColor">@color/color_white</item>
+        <item name="android:textSize">11sp</item>
+        <item name="android:lineSpacingExtra">3dp</item>
+    </style>
+
+    <style name="font_11sp_red500_grey900">
+        <item name="android:textColor">@drawable/red500_grey900_selector</item>
+        <item name="android:textSize">11sp</item>
+        <item name="android:lineSpacingExtra">3dp</item>
+    </style>
+
+    <style name="font_11sp_red500">
+        <item name="android:textColor">@color/color_red500</item>
+        <item name="android:textSize">11sp</item>
+        <item name="android:lineSpacingExtra">3dp</item>
+    </style>
+
+    <style name="font_10sp_grey900">
+        <item name="android:textColor">@color/color_grey900</item>
+        <item name="android:textSize">10sp</item>
+        <item name="android:lineSpacingExtra">2.5dp</item>
+    </style>
+
+    <style name="font_10sp_grey800">
+        <item name="android:textColor">@color/color_grey800</item>
+        <item name="android:textSize">10sp</item>
+        <item name="android:lineSpacingExtra">2.5dp</item>
+    </style>
+
+
+    <style name="font_10sp_grey700">
+        <item name="android:textColor">@color/color_grey700</item>
+        <item name="android:textSize">10sp</item>
+        <item name="android:lineSpacingExtra">2.5dp</item>
+    </style>
+
+    <style name="font_10sp_white">
+        <item name="android:textColor">@color/color_white</item>
+        <item name="android:textSize">10sp</item>
+        <item name="android:lineSpacingExtra">2.5dp</item>
+    </style>
+
+    <style name="font_10sp_red500_grey900">
+        <item name="android:textColor">@drawable/red500_grey900_selector</item>
+        <item name="android:textSize">10sp</item>
+        <item name="android:lineSpacingExtra">2.5dp</item>
+    </style>
+
+    <style name="font_9sp_grey900">
+        <item name="android:textColor">@color/color_grey900</item>
+        <item name="android:textSize">14sp</item>
+        <item name="android:lineSpacingExtra">2.5dp</item>
+    </style>
+
+
+</resources>

@@ -2,16 +2,23 @@ package com.haiming.paper.Utils;
 
 import android.content.Context;
 import android.content.res.Resources;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
 import android.os.Handler;
 import android.provider.Settings;
 import android.util.DisplayMetrics;
 import android.view.Display;
+import android.view.View;
 import android.view.WindowManager;
+import android.widget.EditText;
 import android.widget.Toast;
 
 import com.haiming.paper.application.BaseApplication;
 
+import java.io.ByteArrayOutputStream;
+import java.io.UnsupportedEncodingException;
 import java.lang.reflect.Method;
 import java.util.List;
 
@@ -187,6 +194,23 @@ public class UIUtil {
         }
     }
 
+
+    /**
+     * 获取状态栏高度
+     */
+
+//    public static int getStateBarHeight(){
+//        int statusBarHeight1 = 0;
+////获取status_bar_height资源的ID
+//        int resourceId = getResources().getIdentifier("status_bar_height", "dimen", "android");
+//        if (resourceId > 0) {
+//            //根据资源ID获取响应的尺寸值
+//            statusBarHeight1 = getResources().getDimensionPixelSize(resourceId);
+//        }
+//        return statusBarHeight1;
+//    }
+
+
     /**
      * dip转px
      *
@@ -272,15 +296,11 @@ public class UIUtil {
      * 获取状态栏高度
      */
 
-    public static int getStateBarHeight(){
-        int statusBarHeight1 = 0;
-//获取status_bar_height资源的ID
-        int resourceId = getResources().getIdentifier("status_bar_height", "dimen", "android");
-        if (resourceId > 0) {
-            //根据资源ID获取响应的尺寸值
-            statusBarHeight1 = getResources().getDimensionPixelSize(resourceId);
-        }
-       return statusBarHeight1;
+    public static int getStatusBarHeight(Context context) {
+        Resources resources = context.getResources();
+        int resourceId = resources.getIdentifier("status_bar_height", "dimen", "android");
+        int height = resources.getDimensionPixelSize(resourceId);
+        return height;
     }
 
 
@@ -319,5 +339,82 @@ public class UIUtil {
 //
 //    }
 
+
+    /**
+     * edittext自动消失
+     * @return
+     */
+    public static View.OnFocusChangeListener onFocusAutoClearHintListener (){
+        return (v, hasFocus) -> {
+            EditText textView = (EditText) v;
+            String hint;
+            if (hasFocus) {
+                hint = textView.getHint().toString();
+                textView.setTag(hint);
+                textView.setHint("");
+            } else {
+                hint = textView.getTag().toString();
+                textView.setHint(hint);
+            }
+        };
+    }
+
+    /**
+     * 将图片转换成二进制数组
+     * @param drawable
+     * @return
+     */
+    public static byte[] drawable2Byte(Drawable drawable){
+        if(drawable == null){
+            return null;
+        }
+        BitmapDrawable bd = (BitmapDrawable)drawable;
+        Bitmap bitmap = bd.getBitmap();
+        ByteArrayOutputStream os = new ByteArrayOutputStream();
+        bitmap.compress(Bitmap.CompressFormat.PNG,100,os);
+        return os.toByteArray();
+    }
+
+    public static Drawable byte2Drawable(byte[] bytes){
+        if(bytes == null){
+            return null;
+        }
+        Bitmap bitmap = BitmapFactory.decodeByteArray(bytes,0,bytes.length,null);
+        BitmapDrawable bitmapDrawable = new BitmapDrawable(bitmap);
+        Drawable drawable = bitmapDrawable;
+        return drawable;
+    }
+
+    public static String drawable2String(Drawable drawable) {
+        if (drawable == null) {
+            return null;
+        }
+        BitmapDrawable bd = (BitmapDrawable) drawable;
+        Bitmap bitmap = bd.getBitmap();
+        ByteArrayOutputStream os = new ByteArrayOutputStream();
+        bitmap.compress(Bitmap.CompressFormat.PNG, 100, os);
+        try {
+            return new String(os.toByteArray(),"ISO-8859-1");
+        } catch (UnsupportedEncodingException e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
+
+    public static Drawable string2Drawable(String strByte) {
+        if (strByte.isEmpty()) {
+            return null;
+        }
+        byte[] bytes = new byte[0];
+        try {
+            bytes = strByte.getBytes("ISO-8859-1");
+        } catch (UnsupportedEncodingException e) {
+            e.printStackTrace();
+        }
+        Bitmap bitmap = BitmapFactory.decodeByteArray(bytes, 0, bytes.length, null);
+        BitmapDrawable bitmapDrawable = new BitmapDrawable(bitmap);
+        Drawable drawable = bitmapDrawable;
+        return drawable;
+    }
 
 }

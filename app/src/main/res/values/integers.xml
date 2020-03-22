@@ -7,4 +7,6 @@
     <integer name="swipe_layout_default_refresh_complete_to_default_scrolling_duration">300</integer>
 
     <integer name="swipe_layout_default_load_more_complete_to_default_scrolling_duration">300</integer>
+    <integer name="cpb_default_min_sweep_angle">20</integer>
+    <integer name="cpb_default_max_sweep_angle">300</integer>
 </resources>

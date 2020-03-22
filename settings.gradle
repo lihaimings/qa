@@ -1,2 +1,2 @@
-include ':app'
+include ':app', ':videolib', ':reslib', ':toolslib', ':xrichtext'
 rootProject.name='paper'

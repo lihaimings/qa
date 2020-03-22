@@ -14,17 +14,17 @@
         android:gravity="center"
         android:singleLine="true" />
 
-    <com.youcheyihou.library.view.tablayout.MsgView
+    <com.haiming.paper.ui.view.MsgView
         android:id="@+id/rtv_msg_tip"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:gravity="center"
         android:textColor="@color/color_ffffff"
-        android:textSize="@dimen/dimen_11sp"
+        android:textSize="@dimen/x11"
         android:visibility="gone"
         mv:mv_backgroundColor="@color/color_c1"
         mv:mv_isRadiusHalfHeight="true"
         mv:mv_strokeColor="@color/color_ffffff"
-        mv:mv_strokeWidth="@dimen/dimen_1dp" />
+        mv:mv_strokeWidth="@dimen/x1" />
 
 </RelativeLayout>

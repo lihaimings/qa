@@ -18,8 +18,8 @@
     <string name="reward_coins">悬赏金币:%s</string>
     <string name="how_ask">如何提一个好问题?</string>
     <string name="lose_interest">不感兴趣</string>
-    <string name="question_title_hint">输入4-50字的问题并以“?”结尾</string>
-    <string name="question_description_hint">·给问题补充说明，可获得更多优质回答哦（选填）\n·悬赏金币数由系统算法生成，你可以点击修改悬赏金额</string>
+    <string name="question_title_hint">输入50字内的问题</string>
+    <string name="question_description_hint">·给问题补充说明，可获得更多优质回答哦（选填,最多500字）\n</string>
     <string name="modify_number_coins">修改悬赏金币数</string>
     <string name="one_hundred">100</string>
     <string name="fifty">50</string>
@@ -44,4 +44,31 @@
     <string name="load_more">加载更多</string>
     <string name="pickerview_cancel">取消</string>
     <string name="pickerview_submit">确定</string>
+    <!-- CircularProgressBar -->
+    <string name="cpb_default_sweep_speed" format="float">1</string>
+    <string name="cpb_default_rotation_speed" format="float">1</string>
+
+    <string name="updating_install_file_no_exist">安装文件不存在</string>
+
+    <!--common-->
+    <string name="cancel">取消</string>
+    <string name="claim">确认</string>
+    <string name="ok">确定</string>
+    <string name="copy_success">复制成功</string>
+    <!--loading-->
+    <string name="hard_to_loading">加载中...</string>
+
+
+    <!-- LoadMoreListView -->
+    <string name="common_load_more_end">没有更多了</string>
+    <string name="load_more_loading">正在加载中...</string>
+
+    <!-- PullToNext -->
+    <string name="ptn_no_more_data">已经是最后一页了</string>
+    <string name="ptn_release_to_next">放手查看下一页</string>
+    <string name="ptn_pull_up_to_next">上拉查看下一页</string>
+    <string name="ptn_the_first">已经是第一页了</string>
+    <string name="ptn_release_to_previous">放手查看前一页</string>
+    <string name="ptn_pull_down_to_previous">下拉查看前一页</string>
+    <string name="editor_recommend">编辑推荐</string>
 </resources>

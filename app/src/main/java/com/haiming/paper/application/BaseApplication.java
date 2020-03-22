@@ -9,6 +9,7 @@ import android.os.Looper;
 import com.haiming.paper.Utils.CommonUtil;
 import com.haiming.paper.Utils.GreendaoUtils;
 import com.haiming.paper.db.DaoSession;
+import com.hjq.toast.ToastUtils;
 
 
 /**
@@ -65,6 +66,14 @@ public class BaseApplication extends Application {
 
         mGreendaoUtils =  GreendaoUtils.newInstance(this);
         mDaoSession = mGreendaoUtils.getDaoSession();
+        ToastUtils.init(this);
+
+        //设置根据二进制设置图片
+        initPic();
+
+    }
+
+    private void initPic() {
 
     }
 

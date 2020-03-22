@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <dimen name="state_bar_def_height">25dp</dimen> <!--状态栏默认高-->
+
+</resources>

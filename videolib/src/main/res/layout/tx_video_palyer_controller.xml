@@ -1,0 +1,375 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <!--底图-->
+    <ImageView
+        android:id="@+id/image"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:scaleType="centerCrop" />
+
+    <!--加载动画-->
+    <LinearLayout
+        android:id="@+id/loading"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="center"
+        android:orientation="vertical"
+        android:visibility="gone">
+
+        <ProgressBar
+            android:layout_width="@dimen/dimen_27dp"
+            android:layout_height="@dimen/dimen_10dp"
+            android:indeterminateDrawable="@drawable/loading" />
+
+        <TextView
+            android:id="@+id/load_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/dimen_8dp"
+            android:textColor="@android:color/white"
+            android:textSize="13sp"
+            tools:text="正在缓冲..." />
+    </LinearLayout>
+
+    <!--改变播放位置-->
+    <LinearLayout
+        android:id="@+id/change_position"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:background="@drawable/rectangle_c8000000_corners_6dp_shape"
+        android:gravity="center"
+        android:orientation="vertical"
+        android:padding="@dimen/dimen_8dp"
+        android:visibility="gone">
+
+        <TextView
+            android:id="@+id/change_position_current"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="00:00"
+            android:textColor="@android:color/white"
+            android:textSize="28sp" />
+
+        <ProgressBar
+            android:id="@+id/change_position_progress"
+            style="@android:style/Widget.ProgressBar.Horizontal"
+            android:layout_width="@dimen/dimen_100dp"
+            android:layout_height="@dimen/dimen_2dp"
+            android:layout_marginBottom="@dimen/dimen_4dp"
+            android:layout_marginTop="@dimen/dimen_8dp"
+            android:max="100"
+            android:progressDrawable="@drawable/bg_7dffffff_progress_ffffff_2dp_layerlist" />
+    </LinearLayout>
+
+    <!--改变亮度-->
+    <LinearLayout
+        android:id="@+id/change_brightness"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:background="@drawable/rectangle_c8000000_corners_6dp_shape"
+        android:gravity="center"
+        android:orientation="vertical"
+        android:padding="@dimen/dimen_8dp"
+        android:visibility="gone">
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@mipmap/ic_palyer_brightness" />
+
+        <ProgressBar
+            android:id="@+id/change_brightness_progress"
+            style="@android:style/Widget.ProgressBar.Horizontal"
+            android:layout_width="@dimen/dimen_100dp"
+            android:layout_height="@dimen/dimen_2dp"
+            android:layout_marginBottom="@dimen/dimen_4dp"
+            android:layout_marginTop="@dimen/dimen_8dp"
+            android:max="100"
+            android:progressDrawable="@drawable/bg_7dffffff_progress_ffffff_2dp_layerlist" />
+    </LinearLayout>
+
+    <!--改变声音-->
+    <LinearLayout
+        android:id="@+id/change_volume"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:background="@drawable/rectangle_c8000000_corners_6dp_shape"
+        android:gravity="center"
+        android:orientation="vertical"
+        android:padding="@dimen/dimen_8dp"
+        android:visibility="gone">
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@mipmap/ic_palyer_volume" />
+
+        <ProgressBar
+            android:id="@+id/change_volume_progress"
+            style="@android:style/Widget.ProgressBar.Horizontal"
+            android:layout_width="@dimen/dimen_100dp"
+            android:layout_height="@dimen/dimen_2dp"
+            android:layout_marginBottom="@dimen/dimen_4dp"
+            android:layout_marginTop="@dimen/dimen_8dp"
+            android:max="100"
+            android:progressDrawable="@drawable/bg_7dffffff_progress_ffffff_2dp_layerlist" />
+    </LinearLayout>
+
+    <!--播放完成-->
+    <LinearLayout
+        android:id="@+id/completed"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/color_6c0b0b0b"
+        android:gravity="center"
+        android:orientation="horizontal"
+        android:visibility="gone">
+
+        <TextView
+            android:id="@+id/replay"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:drawableLeft="@mipmap/ic_player_replay"
+            android:drawablePadding="@dimen/dimen_4dp"
+            android:padding="@dimen/dimen_8dp"
+            android:text="重新播放"
+            android:textColor="@android:color/white"
+            android:textSize="13sp" />
+    </LinearLayout>
+
+    <!--播放错误-->
+    <LinearLayout
+        android:id="@+id/error_layout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@android:color/black"
+        android:gravity="center"
+        android:orientation="vertical"
+        android:visibility="gone">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="播放错误，请重试。"
+            android:textColor="@android:color/white"
+            android:textSize="13sp" />
+
+        <TextView
+            android:id="@+id/retry_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/dimen_8dp"
+            android:background="@drawable/solid_323232_corners_20dp_shape"
+            android:paddingBottom="@dimen/dimen_5dp"
+            android:paddingLeft="@dimen/dimen_12dp"
+            android:paddingRight="@dimen/dimen_12dp"
+            android:paddingTop="@dimen/dimen_4dp"
+            android:text="点击重试"
+            android:textColor="@android:color/white"
+            android:textSize="13sp" />
+    </LinearLayout>
+
+    <!--播放进度-->
+    <ProgressBar
+        android:id="@+id/play_progress"
+        style="?android:attr/progressBarStyleHorizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:max="100"
+        android:maxHeight="@dimen/dimen_2dp"
+        android:minHeight="@dimen/dimen_2dp"
+        android:progress="0"
+        android:progressDrawable="@drawable/seek_progress" />
+
+    <!--控制区-->
+    <FrameLayout
+        android:id="@+id/control_layer"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_alignParentTop="true"
+        android:layout_toRightOf="@+id/loading"
+        android:background="@color/color_99000000">
+
+        <!--顶部控制区-->
+        <LinearLayout
+            android:id="@+id/top_control_layout"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dimen_44dp"
+            android:background="@mipmap/player_mask_top"
+            android:gravity="center_vertical"
+            android:paddingLeft="@dimen/gap_start_end"
+            android:paddingRight="@dimen/gap_start_end"
+            android:visibility="gone">
+
+            <ImageView
+                android:id="@+id/back_img"
+                android:layout_width="@dimen/dimen_30dp"
+                android:layout_height="@dimen/dimen_30dp"
+                android:src="@mipmap/btn_top_close_white" />
+
+            <TextView
+                android:id="@+id/title"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/dimen_8dp"
+                android:layout_weight="1"
+                android:ellipsize="end"
+                android:singleLine="true"
+                android:textColor="@android:color/white"
+                android:textSize="14sp"
+                tools:text="真实死亡游戏“蓝鲸”疑似进入国内，家长们要注意了" />
+
+            <LinearLayout
+                android:id="@+id/battery_time"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/dimen_8dp"
+                android:orientation="vertical">
+
+                <ImageView
+                    android:id="@+id/battery"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@mipmap/battery_100" />
+
+                <TextView
+                    android:id="@+id/time"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="00:00"
+                    android:textColor="@android:color/white"
+                    android:textSize="10sp" />
+            </LinearLayout>
+        </LinearLayout>
+
+        <ImageView
+            android:id="@+id/restart_or_pause"
+            android:layout_width="@dimen/dimen_40dp"
+            android:layout_height="@dimen/dimen_40dp"
+            android:layout_gravity="center"
+            android:padding="@dimen/dimen_8dp"
+            android:src="@mipmap/btn_vedio_play_single" />
+
+        <!--底部控制区-->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dimen_40dp"
+            android:layout_gravity="bottom"
+            android:background="@mipmap/player_mask_bottom"
+            android:gravity="center_vertical"
+            android:paddingLeft="@dimen/gap_start_end">
+
+            <TextView
+                android:id="@+id/position"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="00:00"
+                android:textColor="@android:color/white"
+                android:textSize="12sp" />
+
+            <SeekBar
+                android:id="@+id/seek"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:layout_weight="1"
+                android:background="@null"
+                android:max="100"
+                android:maxHeight="@dimen/dimen_3dp"
+                android:minHeight="@dimen/dimen_3dp"
+                android:progressDrawable="@drawable/seek_progress"
+                android:thumb="@mipmap/btn_vedio_handle" />
+
+            <TextView
+                android:id="@+id/duration"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="00:00"
+                android:textColor="@android:color/white"
+                android:textSize="12sp" />
+
+            <TextView
+                android:id="@+id/clarity"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingLeft="@dimen/dimen_15dp"
+                android:textColor="@android:color/white"
+                android:textSize="14sp"
+                android:visibility="gone"
+                tools:text="超清" />
+
+            <ImageView
+                android:id="@+id/full_screen"
+                android:layout_width="@dimen/dimen_54dp"
+                android:layout_height="@dimen/dimen_24dp"
+                android:paddingLeft="@dimen/dimen_15dp"
+                android:paddingRight="@dimen/dimen_15dp"
+                android:src="@mipmap/btn_vedio_fullscreen" />
+        </LinearLayout>
+
+    </FrameLayout>
+
+    <!--右下角初始显示的总时长-->
+    <TextView
+        android:id="@+id/length"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentRight="true"
+        android:layout_marginBottom="@dimen/dimen_12dp"
+        android:layout_marginRight="@dimen/dimen_8dp"
+        android:padding="@dimen/dimen_4dp"
+        android:textColor="@android:color/white"
+        android:textSize="@dimen/dimen_12sp"
+        tools:text="00:00" />
+
+    <!--中间开始播放按钮-->
+    <ImageView
+        android:id="@+id/center_start_img"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:src="@mipmap/btn_vedio_play" />
+
+    <!--提示-->
+    <LinearLayout
+        android:id="@+id/tip_layout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@android:color/black"
+        android:gravity="center"
+        android:orientation="vertical"
+        android:visibility="gone">
+
+        <TextView
+            android:id="@+id/tip_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/not_wifi_tip"
+            android:textColor="@android:color/white"
+            android:textSize="@dimen/dimen_13sp" />
+
+        <TextView
+            android:id="@+id/tip_click_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/dimen_8dp"
+            android:background="@drawable/solid_323232_corners_20dp_shape"
+            android:paddingBottom="@dimen/dimen_5dp"
+            android:paddingLeft="@dimen/dimen_12dp"
+            android:paddingRight="@dimen/dimen_12dp"
+            android:paddingTop="@dimen/dimen_4dp"
+            android:text="@string/continue_play"
+            android:textColor="@android:color/white"
+            android:textSize="@dimen/dimen_13sp" />
+    </LinearLayout>
+
+</RelativeLayout>

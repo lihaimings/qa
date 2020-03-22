@@ -65,6 +65,7 @@
         app:layout_constraintVertical_bias=".90"
         android:padding="@dimen/x5"
         android:textColor="@color/colorE59B79"
+        android:paddingHorizontal="@dimen/x80"
         android:textSize="@dimen/x10"/>
 
     <View

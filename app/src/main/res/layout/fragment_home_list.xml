@@ -1,23 +1,22 @@
 <?xml version="1.0" encoding="utf-8"?>
-<com.aspsine.swipetoloadlayout.SwipeToLoadLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/parent_layout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:id="@+id/swipe_to_load_layout"
-    style="@style/SwipeToRefreshStyle"
-    android:background="@drawable/question_and_answer_bg"
-    >
-    <include
-        android:id="@id/swipe_refresh_header"
-        layout="@layout/header_refresh"/>
+    android:background="@drawable/question_and_answer_bg">
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@id/swipe_target"
+    <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+        android:id="@+id/refresh_layout"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:clipToPadding="false"
-        />
+        android:layout_height="match_parent">
 
-    <include android:id="@id/swipe_load_more_footer"
-        layout="@layout/footer_load_more"/>
-</com.aspsine.swipetoloadlayout.SwipeToLoadLayout>
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recycler_view"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:clipToPadding="false"
+            android:overScrollMode="never"
+            android:paddingTop="@dimen/x10" />
+    </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
+
+</FrameLayout>

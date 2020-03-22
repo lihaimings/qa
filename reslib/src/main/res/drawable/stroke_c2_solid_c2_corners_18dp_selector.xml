@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<selector xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item android:drawable="@drawable/stroke_05dp_c2_corners_18dp_shape" android:state_selected="false" />
+    <item android:drawable="@drawable/solid_color_c2_corners_18dp_shape" android:state_selected="true" />
+
+</selector>
