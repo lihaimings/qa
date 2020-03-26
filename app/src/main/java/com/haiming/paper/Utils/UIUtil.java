@@ -19,7 +19,6 @@ import com.haiming.paper.application.BaseApplication;
 
 import java.io.ByteArrayOutputStream;
 import java.io.UnsupportedEncodingException;
-import java.lang.reflect.Method;
 import java.util.List;
 
 import androidx.core.content.ContextCompat;
@@ -35,6 +34,8 @@ public class UIUtil {
     private static int sScreenW;
     private static int sScreenH;
     private static float sScreenDensity;
+
+    private static Context mContext;
     public static Context getContext() {
         return BaseApplication.getContext();
     }
@@ -55,16 +56,20 @@ public class UIUtil {
         return getResources().getStringArray(resId);
     }
 
+    public static void setContext(Context context) {
+        mContext = context;
+    }
+
     public static int[] getIntrArray(int resId){
         return getResources().getIntArray(resId);
     }
 
     public static String getPackageName() {
-        return getContext().getPackageName();
+        return mContext.getPackageName();
     }
 
-    public static int getColor(int resId) {
-        return ContextCompat.getColor(getContext(),resId);
+    public static int getColor(Context context,int resId) {
+        return ContextCompat.getColor(context,resId);
     }
 
     public static Drawable getDrawable(int resId){
@@ -399,6 +404,48 @@ public class UIUtil {
             e.printStackTrace();
         }
         return null;
+    }
+
+    public static Bitmap string2Bitmap(String strByte){
+        if (strByte.isEmpty()) {
+            return null;
+        }
+        byte[] bytes = new byte[0];
+        Bitmap bitmap = null;
+        try {
+            bytes = strByte.getBytes("ISO-8859-1");
+            bitmap = BitmapFactory.decodeByteArray(bytes,0,bytes.length,null);
+        } catch (UnsupportedEncodingException e) {
+            e.printStackTrace();
+        }
+        return bitmap;
+    }
+
+    public static String bitmap2String(Bitmap bitmap){
+        if(bitmap == null){
+            return null;
+        }
+        ByteArrayOutputStream os = new ByteArrayOutputStream();
+        bitmap.compress(Bitmap.CompressFormat.PNG, 100, os);
+        try {
+            return new String(os.toByteArray(),"ISO-8859-1");
+        } catch (UnsupportedEncodingException e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
+
+    public static byte[] string2byte(String strByte){
+        if (strByte.isEmpty()) {
+            return null;
+        }
+        byte[] bytes = new byte[0];
+        try {
+            bytes = strByte.getBytes("ISO-8859-1");
+        } catch (UnsupportedEncodingException e) {
+            e.printStackTrace();
+        }
+        return bytes;
     }
 
     public static Drawable string2Drawable(String strByte) {

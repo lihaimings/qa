@@ -3,13 +3,10 @@ package com.youcheyihou.toolslib.utils;
 import android.Manifest;
 import android.app.Activity;
 
-import com.tbruyelle.rxpermissions.Permission;
-import com.tbruyelle.rxpermissions.RxPermissions;
+import com.tbruyelle.rxpermissions2.RxPermissions;
 
 import java.util.ArrayList;
 import java.util.List;
-
-import rx.Subscriber;
 
 /**
  * @author ppjun
@@ -85,44 +82,44 @@ public class PermissionUtil {
         if (needRequest.isEmpty()) {
             requestPermission.onRequestPermissionSuccess();
         } else {
-            //开始申请权限
-            rxPermissions.requestEach(needRequest.toArray(new String[needRequest.size()]))
-                    .buffer(permissions.length)
-                    .subscribe(new Subscriber<List<Permission>>() {
-                        @Override
-                        public void onCompleted() {
-
-                        }
-
-                        @Override
-                        public void onError(Throwable e) {
-
-                        }
-
-                        @Override
-                        public void onNext(List<Permission> permissions) {
-                            List<String> failurePermissions = new ArrayList<>();
-                            List<String> AskNeverAgainPermissions = new ArrayList<>();
-                            for (Permission p : permissions) {
-                                if (!p.granted) {
-                                    if (p.shouldShowRequestPermissionRationale) {
-                                        failurePermissions.add(p.name);
-                                    } else {
-                                        AskNeverAgainPermissions.add(p.name);
-                                    }
-                                }
-                            }
-                            if (failurePermissions.size() > 0) {
-                                requestPermission.onRequestPermissionFailure(failurePermissions);
-                            }
-                            if (AskNeverAgainPermissions.size() > 0) {
-                                requestPermission.onRequestPermissionFailureWithAskNeverAgain(AskNeverAgainPermissions);
-                            }
-                            if (failurePermissions.size() == 0 && AskNeverAgainPermissions.size() == 0) {
-                                requestPermission.onRequestPermissionSuccess();
-                            }
-                        }
-                    });
+//            //开始申请权限
+//            rxPermissions.requestEach(needRequest.toArray(new String[needRequest.size()]))
+//                    .buffer(permissions.length)
+//                    .subscribe(new Subscriber<List<Permission>>() {
+//                        @Override
+//                        public void onCompleted() {
+//
+//                        }
+//
+//                        @Override
+//                        public void onError(Throwable e) {
+//
+//                        }
+//
+//                        @Override
+//                        public void onNext(List<Permission> permissions) {
+//                            List<String> failurePermissions = new ArrayList<>();
+//                            List<String> AskNeverAgainPermissions = new ArrayList<>();
+//                            for (Permission p : permissions) {
+//                                if (!p.granted) {
+//                                    if (p.shouldShowRequestPermissionRationale) {
+//                                        failurePermissions.add(p.name);
+//                                    } else {
+//                                        AskNeverAgainPermissions.add(p.name);
+//                                    }
+//                                }
+//                            }
+//                            if (failurePermissions.size() > 0) {
+//                                requestPermission.onRequestPermissionFailure(failurePermissions);
+//                            }
+//                            if (AskNeverAgainPermissions.size() > 0) {
+//                                requestPermission.onRequestPermissionFailureWithAskNeverAgain(AskNeverAgainPermissions);
+//                            }
+//                            if (failurePermissions.size() == 0 && AskNeverAgainPermissions.size() == 0) {
+//                                requestPermission.onRequestPermissionSuccess();
+//                            }
+//                        }
+//                    });
         }
     }
 

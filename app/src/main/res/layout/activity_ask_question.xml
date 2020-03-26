@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
@@ -50,29 +51,44 @@
             android:scaleType="fitXY"
             />
 
-        <ScrollView
+        <com.sendtion.xrichtext.RichTextEditor
+            android:id="@+id/et_input_question_description"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_below="@id/et_input_question"
-            android:layout_above="@+id/iv_question_add_video"
             android:paddingTop="@dimen/x12"
-            >
-            <EditText
-                android:id="@+id/et_input_question_description"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:hint="@string/question_description_hint"
-                android:textColorHint="@color/color_e8e8e8"
-                android:textSize="@dimen/x12"
-                android:textColor="@color/color_e8e8e8"
-                android:gravity="top"
-                android:textCursorDrawable="@drawable/color_cursor"
-                android:background="@null"
-                android:maxLength="500"
-                />
+            android:layout_above="@+id/iv_question_add_video"
+            android:layout_below="@id/et_input_question"
+            android:maxLength="500"
+            app:rt_editor_text_line_space="6dp"
+            app:rt_editor_image_height="500"
+            app:rt_editor_image_bottom="10"
+            app:rt_editor_text_init_hint="请输入问题描述"
+            app:rt_editor_text_size="16sp"
+            app:rt_editor_text_color="@color/color_e8e8e8"
+            />
+<!--        <ScrollView-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="match_parent"-->
+<!--            android:layout_below="@id/et_input_question"-->
+<!--            android:layout_above="@+id/iv_question_add_video"-->
+<!--            android:paddingTop="@dimen/x12"-->
+<!--            >-->
+<!--            <EditText-->
+<!--                android:id="@+id/et_input_question_description"-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="match_parent"-->
+<!--                android:hint="@string/question_description_hint"-->
+<!--                android:textColorHint="@color/color_e8e8e8"-->
+<!--                android:textSize="@dimen/x12"-->
+<!--                android:textColor="@color/color_e8e8e8"-->
+<!--                android:gravity="top"-->
+<!--                android:textCursorDrawable="@drawable/color_cursor"-->
+<!--                android:background="@null"-->
+<!--                android:maxLength="500"-->
+<!--                />-->
 
 
-        </ScrollView>
+<!--        </ScrollView>-->
 
         <ImageView
             android:id="@+id/iv_question_add_video"
@@ -87,7 +103,8 @@
             android:layout_width="@dimen/x60"
             android:layout_height="@dimen/x60"
             android:layout_alignParentBottom="true"
-            android:layout_marginStart="@dimen/x73"
+            android:layout_toRightOf="@id/iv_question_add_video"
+            android:layout_marginStart="@dimen/x5"
             android:src="@drawable/add_picture"
            />
 
@@ -103,17 +120,26 @@
     </RelativeLayout>
    
 
-    <LinearLayout
+    <Button
             android:id="@+id/rl_reward_coin_bar"
             android:layout_width="match_parent"
             android:layout_height="@dimen/x42"
             android:layout_alignParentBottom="true"
             android:paddingStart="@dimen/x13"
             android:background="@drawable/problem__detail_bottom_bg"
-            android:gravity="center_vertical"
+            android:gravity="center"
+        android:text="提交"
+        android:textColor="@color/color_5ab4f1"
+        android:textSize="25sp"
             >
-     <include layout="@layout/show_question_reward_coin"
-         />
-        </LinearLayout>
+<!--     <TextView-->
+<!--        android:id="@+id/input_ask_question"-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:text="提交"-->
+<!--        android:textColor="@color/color_5ab4f1"-->
+<!--        android:textSize="25sp"-->
+<!--        />-->
+        </Button>
 
 </RelativeLayout>

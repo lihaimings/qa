@@ -26,9 +26,6 @@ import android.view.View;
 import android.view.WindowManager;
 import android.widget.EditText;
 
-
-import com.haiming.paper.Utils.UIUtil;
-
 import java.io.File;
 import java.io.IOException;
 import java.lang.reflect.Field;
@@ -36,9 +33,7 @@ import java.text.NumberFormat;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.FileProvider;
@@ -178,8 +173,6 @@ public class CommonUtil {
     }
 
 
-    private static List<PackageInfo> packages = UIUtil.getContext().getPackageManager().getInstalledPackages(0);
-
     /**
      * 判断包是否安装
      *
@@ -244,29 +237,29 @@ public class CommonUtil {
         return false;
     }
 
-    /**
-     * 获取下载的所有应用
-     *
-     * @param context
-     * @return
-     */
-    public synchronized static Map<String, String> getAllInstallPackage(Context context) {
-        Map<String, String> map = new HashMap<>();
-
-        try{
-
-            for (int i = 0; i < packages.size(); i++) {
-                PackageInfo packageInfo = packages.get(i);
-                String name = packageInfo.applicationInfo.loadLabel(context.getPackageManager()).toString();
-                String packageName = packageInfo.packageName;
-                map.put(name, packageName);
-            }
-            return map;
-        }catch (Exception e){
-            e.printStackTrace();
-        }
-        return map;
-    }
+//    /**
+//     * 获取下载的所有应用
+//     *
+//     * @param context
+//     * @return
+//     */
+//    public synchronized static Map<String, String> getAllInstallPackage(Context context) {
+//        Map<String, String> map = new HashMap<>();
+//
+//        try{
+//
+//            for (int i = 0; i < packages.size(); i++) {
+//                PackageInfo packageInfo = packages.get(i);
+//                String name = packageInfo.applicationInfo.loadLabel(context.getPackageManager()).toString();
+//                String packageName = packageInfo.packageName;
+//                map.put(name, packageName);
+//            }
+//            return map;
+//        }catch (Exception e){
+//            e.printStackTrace();
+//        }
+//        return map;
+//    }
 
     //Android6.0读写权限解决方式
     private static final int REQUEST_EXTERNAL_STORAGE = 1;

@@ -15,8 +15,6 @@ import android.widget.ProgressBar;
 import android.widget.SeekBar;
 import android.widget.TextView;
 
-import androidx.annotation.DrawableRes;
-
 import com.youcheyihou.toolslib.utils.NetworkUtil;
 
 import java.text.SimpleDateFormat;
@@ -24,6 +22,8 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import java.util.Locale;
+
+import androidx.annotation.DrawableRes;
 
 /**
  * 仿腾讯视频热点列表页播放器控制器.

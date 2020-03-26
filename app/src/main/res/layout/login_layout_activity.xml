@@ -40,7 +40,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        android:background="@drawable/login_ll_bg"
+        android:background="@drawable/login_input_edittext"
         android:layout_marginHorizontal="@dimen/x30"
 
         >
@@ -69,7 +69,7 @@
             android:layout_height="wrap_content"
             android:orientation="horizontal"
             android:layout_marginTop="@dimen/x10"
-            android:background="@drawable/login_ll_bg"
+            android:background="@drawable/login_input_edittext"
             android:layout_marginHorizontal="@dimen/x30"
             >
             <ImageView

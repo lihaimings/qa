@@ -15,6 +15,9 @@ public class Note implements Serializable {
     private int isEncrypt ;//是否加密，0未加密，1加密
     private String createTime;//创建时间
     private String updateTime;//修改时间
+    private int userId; //用户id
+    private int answerSize; //回答的数量
+    private String answerId;   //回答的id
 
     public int getId() {
         return id;
@@ -94,5 +97,29 @@ public class Note implements Serializable {
 
     public void setUpdateTime(String updateTime) {
         this.updateTime = updateTime;
+    }
+
+    public int getUserId() {
+        return userId;
+    }
+
+    public void setUserId(int userId) {
+        this.userId = userId;
+    }
+
+    public int getAnswerSize() {
+        return answerSize;
+    }
+
+    public void setAnswerSize(int answerSize) {
+        this.answerSize = answerSize;
+    }
+
+    public String getAnswerId() {
+        return answerId;
+    }
+
+    public void setAnswerId(String answerId) {
+        this.answerId = answerId;
     }
 }

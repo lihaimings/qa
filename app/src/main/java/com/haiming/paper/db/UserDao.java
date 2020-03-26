@@ -4,9 +4,9 @@ import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
+import android.util.Log;
 
 import com.haiming.paper.bean.User;
-import com.hjq.toast.ToastUtils;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -62,6 +62,34 @@ public class UserDao {
             }
         }
         return userList;
+    }
+
+
+    public int userLogin(String username,String password) {
+        SQLiteDatabase db = mHelper.getWritableDatabase();
+        int id = 0;
+        String sql="select * from db_user where u_name=? and u_password=?";
+        Cursor cursor=db.rawQuery(sql, new String[]{username,password});
+        if(cursor.moveToFirst()==true){
+            id = cursor.getInt(cursor.getColumnIndex("u_id"));
+            cursor.close();
+            db.close();
+            return id;
+        }
+        db.close();
+        return id;
+    }
+
+    public boolean haveUserNum(String username) {
+        SQLiteDatabase db = mHelper.getWritableDatabase();
+        int id = 0;
+        String sql="select * from db_user where u_name=?";
+        Cursor cursor=db.rawQuery(sql, new String[]{username});
+        if(cursor.moveToFirst()==true){
+            return true;
+        }
+        db.close();
+        return false;
     }
 
     /**
@@ -151,33 +179,23 @@ public class UserDao {
      * 添加一个分用户
      */
     public void insertUser(User user) {
+
         SQLiteDatabase db = mHelper.getWritableDatabase();
 
         Cursor cursor = null;
         try {
-            List<User> userList = queryUserAll();
-            for (User user1 : userList) {
-                if (user1.getName() == user.getName()) {
-                    ToastUtils.show("用户名已被注册");
-                    return;
-                }
-                if (!user.getEmail().isEmpty()) {
-                    if (user.getEmail() == user1.getEmail()) {
-                        ToastUtils.show("邮箱已被注册");
-                        return;
-                    }
-                }
-            }
             ContentValues values = new ContentValues();
             values.put("u_name", user.getName());
             values.put("u_password", user.getPassword());
-            values.put("u_eamil", user.getEmail());
+            values.put("u_email", user.getEmail());
             values.put("u_signature", user.getSignature());
             values.put("u_sex", user.getSex());
-            values.put("u_isManager",0);
+            values.put("u_isManager",user.getIsManager());
             db.insert("db_user", null, values);
+            Log.d("数据","用户注册完成");
         } catch (Exception e) {
             e.printStackTrace();
+            Log.d("数据","用户注册异常");
         } finally {
             if (cursor != null && !cursor.isClosed()) {
                 cursor.close();
@@ -188,10 +206,13 @@ public class UserDao {
         }
     }
 
+
+
+
     /**
      * 更新一个用户
      */
-    public void updateGroup(User user) {
+    public void updateUser(User user) {
         SQLiteDatabase db = mHelper.getWritableDatabase();
 
         try {
@@ -215,7 +236,7 @@ public class UserDao {
     /**
      * 删除一个用户
      */
-    public int deleteGroup(int userId) {
+    public int deleteUser(int userId) {
         SQLiteDatabase db = mHelper.getWritableDatabase();
 
         int ret = 0;

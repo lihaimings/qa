@@ -33,6 +33,16 @@ android {
 //////        daoPackage 'com.haiming.paper' //生成代码到具体包下
 ////    }
 
+    splits {
+        abi {
+            enable true
+            reset()
+            include 'x86', 'x86_64', 'armeabi-v7a', 'armeabi'
+            universalApk false
+        }
+    }
+
+
 
 }
 
@@ -44,6 +54,9 @@ dependencies {
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'androidx.test.ext:junit:1.1.1'
     implementation project(':xrichtext')
+    implementation project(':videolib')
+    implementation project(':reslib')
+    implementation project(':toolslib')
 
     api 'androidx.recyclerview:recyclerview:1.1.0-beta01'
     api 'com.google.android.material:material:1.1.0-alpha08'
@@ -59,7 +72,6 @@ dependencies {
     api 'com.netflix.rxjava:rxjava-core:0.17.6'
     api 'com.netflix.rxjava:rxjava-android:0.17.6'
     api 'top.zibin:Luban:1.1.2'
-
 
     api 'com.bm.photoview:library:1.4.1'
     api 'me.leolin:ShortcutBadger:1.1.21@aar'
@@ -99,6 +111,7 @@ dependencies {
 
     implementation "io.reactivex.rxjava2:rxjava:2.2.3"
     implementation 'io.reactivex.rxjava2:rxandroid:2.1.0'
+    implementation 'com.tbruyelle.rxpermissions2:rxpermissions:0.9.4@aar'
 
     //崩溃日志上传框架
     implementation 'com.github.wenmingvs:LogReport:1.0.3'

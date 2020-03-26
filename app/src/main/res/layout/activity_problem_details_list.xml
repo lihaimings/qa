@@ -107,7 +107,7 @@
                android:gravity="left"
                android:orientation="vertical"
                android:layout_marginTop="@dimen/x13" >
-               <include layout="@layout/answer_question_coin_reward" />
+<!--              <include layout="@layout/answer_question_coin_reward" />-->
            </LinearLayout>
             <RelativeLayout
                 android:layout_width="match_parent"

@@ -2,22 +2,16 @@ package com.haiming.paper.ui.activity;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.view.View;
-import android.view.Window;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.ImageView;
-import android.widget.TextView;
-import android.widget.Toast;
 
 import com.haiming.paper.R;
-import com.haiming.paper.Utils.UIUtil;
+import com.haiming.paper.db.UserData;
+import com.haiming.paper.ui.MainActivity;
 
 import androidx.annotation.Nullable;
 import androidx.core.content.ContextCompat;
-import butterknife.BindView;
-import butterknife.ButterKnife;
-import butterknife.OnClick;
 
 public class LoginRegisterActivity extends BaseActivity {
 
@@ -32,11 +26,18 @@ public class LoginRegisterActivity extends BaseActivity {
         super.onCreate(savedInstanceState);
 
         setContentView(R.layout.login_and_register_activity);
-
+        checkLogin();
         initView();
     }
 
+    public void checkLogin() {
+        if (UserData.isUserLogin(this)) {
+            mIntent = new Intent(this, MainActivity.class);
+            startActivity(mIntent);
+            finish();
+        }
 
+    }
 
     private void initView() {
         mClose = findViewById(R.id.iv_back);
@@ -50,30 +51,30 @@ public class LoginRegisterActivity extends BaseActivity {
             }
         });
         loginBtn.setOnClickListener(v -> {
-            clickView(loginBtn,1);
+            clickView(loginBtn, 1);
         });
 
         registerBtn.setOnClickListener(v -> {
 
-            clickView(registerBtn,2);
+            clickView(registerBtn, 2);
         });
 
-        mClose.setOnClickListener(V->finish());
+        mClose.setOnClickListener(V -> finish());
     }
 
-    public void clickView(Button view,int tag){
+    public void clickView(Button view, int tag) {
         loginBtn.setSelected(false);
         registerBtn.setSelected(false);
-        loginBtn.setTextColor(ContextCompat.getColor(this,R.color.black));
-        registerBtn.setTextColor(ContextCompat.getColor(this,R.color.black));
+        loginBtn.setTextColor(ContextCompat.getColor(this, R.color.black));
+        registerBtn.setTextColor(ContextCompat.getColor(this, R.color.black));
 
         view.setSelected(true);
-        view.setTextColor(ContextCompat.getColor(this,R.color.white));
+        view.setTextColor(ContextCompat.getColor(this, R.color.white));
 
-        if(tag == 1){
-            mIntent = new Intent(this,LoginActivity.class);
-        }else {
-            mIntent = new Intent(this,RegisterActivity.class);
+        if (tag == 1) {
+            mIntent = new Intent(this, LoginActivity.class);
+        } else {
+            mIntent = new Intent(this, RegisterActivity.class);
         }
         startActivity(mIntent);
     }

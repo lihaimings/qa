@@ -39,6 +39,16 @@ public abstract class BaseFragment extends Fragment {
     protected abstract void initView();
 
     @Override
+    public void setUserVisibleHint(boolean isVisibleToUser) {
+        super.setUserVisibleHint(isVisibleToUser);
+        if (isVisibleToUser){
+            loadData();
+        }
+    }
+
+    protected abstract void loadData();
+
+    @Override
     public void onDestroy() {
         super.onDestroy();
         destroyBroadcastReceiver();

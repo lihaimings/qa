@@ -6,21 +6,22 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.haiming.paper.R;
+import com.haiming.paper.bean.Note;
 
 import java.util.List;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-public class HomeRecycerViewAdapter extends RecyclerBaseAdapter<String,HomeRecycerViewAdapter.ViewHolder> {
+public class HomeRecycerViewAdapter extends RecyclerBaseAdapter<Note, HomeRecycerViewAdapter.ViewHolder> {
 
-            private boolean noAnswer;
+    private boolean noAnswer;
 
-            private final int HAVE_ANSWER = 0x01;
-            private final int NO_ANSWER = 0x02;
+    private final int HAVE_ANSWER = 0x01;
+    private final int NO_ANSWER = 0x02;
 
-    public HomeRecycerViewAdapter(Context mContext,List<String> dataList) {
-                super(mContext,dataList);
+    public HomeRecycerViewAdapter(Context mContext, List<Note> dataList) {
+        super(mContext, dataList);
     }
 
     @NonNull
@@ -49,7 +50,7 @@ public class HomeRecycerViewAdapter extends RecyclerBaseAdapter<String,HomeRecyc
         return HAVE_ANSWER;
     }
 
-    class ViewHolder extends RecyclerView.ViewHolder{
+    class ViewHolder extends RecyclerView.ViewHolder {
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);

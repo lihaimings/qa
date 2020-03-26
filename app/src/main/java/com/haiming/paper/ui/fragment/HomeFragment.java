@@ -1,67 +1,33 @@
 package com.haiming.paper.ui.fragment;
 
-import android.util.Log;
-import android.view.View;
+import com.haiming.paper.bean.Note;
 
+public class HomeFragment extends BaseQATavFragment {
 
-
-import com.haiming.paper.R;
-import com.haiming.paper.adapter.HomeRecycerViewAdapter;
-import com.haiming.paper.ui.view.recyclerview.LoadMoreRecyclerView;
-
-import java.util.ArrayList;
-import java.util.List;
-
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
-
-public class HomeFragment extends BaseFragment implements SwipeRefreshLayout.OnRefreshListener,LoadMoreRecyclerView.OnLoadMoreListener {
-
-
-    private LoadMoreRecyclerView recyclerView;
-    private SwipeRefreshLayout refreshLayout;
-    private HomeRecycerViewAdapter mAdapter;
-
-    private List<String> data = new ArrayList<>();
+//    public NoteDao mNoteDao;
+////    public GroupDao mGroupDao;
+////    @Override
+////    protected void loadData() {
+////        mNoteDao = new NoteDao(getActivity());
+////        mGroupDao = new GroupDao(getActivity());
+//////        int id = mGroupDao.queryByNameToId("首页");
+////        if (mNoteDao != null){
+////            dataList = mNoteDao.queryNotesAll(1);
+////            Log.d("数据","已实例化");
+////        }else {
+////            Log.d("数据","没有实例化");
+////        }
+////
+////}
 
 
     @Override
-    protected int getLayout() {
-        return R.layout.fragment_home_list;
-    }
-
-    @Override
-    public void initView() {
-        for(int i=1;i<25;i++){
-           data.add(""+i);
+    protected void loadData() {
+        super.loadData();
+        for (int i= 0;i<10;i++){
+            Note note = new Note();
+            note.setContent("你好");
+            dataList.add(note);
         }
-        View view =getView();
-        if(view == null){
-            Log.e("加载时","view是空的");
-            return;
-        }else {
-            Log.e("加载时","view不是空的");
-        }
-        recyclerView = view.findViewById(R.id.recycler_view);
-        refreshLayout = view.findViewById(R.id.refresh_layout);
-        mAdapter = new HomeRecycerViewAdapter(getContext(),data);
-        recyclerView.post(() -> {
-            recyclerView.setOnLoadMoreListener(this);
-            recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
-            recyclerView.setAdapter(mAdapter);
-        });
-
-
-    }
-
-
-    @Override
-    public void onRefresh() {
-
-    }
-
-    @Override
-    public void onLoadMore() {
-
     }
 }

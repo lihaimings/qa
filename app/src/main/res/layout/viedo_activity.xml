@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <Button
+        android:id="@+id/select_vd"
+        android:layout_width="match_parent"
+        android:layout_height="200dp"
+        android:background="@color/colorAccent"
+        android:text="选择视频"
+        android:textColor="@color/cardview_dark_background" />
+
+    <TextView
+        android:id="@+id/vd_tv"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textColor="@color/black"
+        android:text="@string/bga_pp_download_img_failure"
+        />
+
+    <com.youcheyihou.videolib.NiceVideoPlayer
+        android:id="@+id/nice_view"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dimen_200dp" />
+</LinearLayout>

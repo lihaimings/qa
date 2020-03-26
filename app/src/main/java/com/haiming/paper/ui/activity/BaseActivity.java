@@ -4,7 +4,6 @@ import android.graphics.Color;
 import android.os.Build;
 import android.os.Bundle;
 import android.view.View;
-import android.view.Window;
 import android.view.WindowManager;
 
 import com.haiming.paper.R;
@@ -54,7 +53,7 @@ public class BaseActivity extends AppCompatActivity {
     }
 
     protected int getStatusBarBgColor(){
-        return UIUtil.getColor(UIUtil.getColor(R.color.main_color_gradient_star));
+        return UIUtil.getColor(this,R.color.main_color_gradient_star);
     }
 
 

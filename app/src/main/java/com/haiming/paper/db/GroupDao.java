@@ -115,6 +115,37 @@ public class GroupDao {
     }
 
     /**
+     * 根据分类名查询分类
+     *
+     * @param groupName
+     * @return
+     */
+    public int queryByNameToId(String groupName) {
+        SQLiteDatabase db = helper.getWritableDatabase();
+
+        Group group = null;
+        Cursor cursor = null;
+        try {
+            Log.i(TAG, "###queryGroupByName: "+groupName);
+            cursor = db.query("db_group", null, "g_name=?", new String[]{groupName}, null, null, null);
+            while (cursor.moveToNext()) {
+                int groupId = cursor.getInt(cursor.getColumnIndex("g_id"));
+               return groupId;
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            if (cursor != null && !cursor.isClosed()) {
+                cursor.close();
+            }
+            if (db != null) {
+                db.close();
+            }
+        }
+        return 0;
+    }
+
+    /**
      * 根据分类ID查询分类
      *
      * @return

@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:gravity="center_horizontal">
+    <FrameLayout
+        android:layout_width="@dimen/x40"
+        android:layout_height="@dimen/x31">
+        <com.airbnb.lottie.LottieAnimationView
+            android:id="@+id/main_tab_gif_icon"
+            android:layout_width="@dimen/x27"
+            android:layout_height="@dimen/x27"
+            android:layout_gravity="center_horizontal|bottom"
+            />
+        <com.haiming.paper.ui.view.MaterialBadgeTextView
+            android:id="@+id/main_tab_badge"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="right"
+            android:text="1"
+            app:base_padding="12"
+            android:visibility="gone"
+            style="@style/BadgeStyle" />
+    </FrameLayout>
+
+    <TextView
+        android:id="@+id/main_tab_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="@dimen/x9"
+        android:text="@string/building"
+        android:textColor="@color/tv_gray_77"
+        android:layout_marginBottom="@dimen/x2" />
+</LinearLayout>

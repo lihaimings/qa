@@ -67,6 +67,7 @@ public class NiceVideoPlayer extends FrameLayout implements INiceVideoPlayer, Te
     private int mBufferPercentage;
     private boolean continueFromLastPosition = true;
     private long skipToPosition;
+    public String imagePath;
 
     public NiceVideoPlayer(Context context) {
         this(context, null);
@@ -81,7 +82,9 @@ public class NiceVideoPlayer extends FrameLayout implements INiceVideoPlayer, Te
     private void init() {
         mContainer = new FrameLayout(mContext);
         mContainer.setBackgroundColor(Color.BLACK);
-        LayoutParams params = new LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT);
+        LayoutParams params = new LayoutParams(
+                ViewGroup.LayoutParams.MATCH_PARENT,
+                ViewGroup.LayoutParams.MATCH_PARENT);
         this.addView(mContainer, params);
     }
 
@@ -562,7 +565,7 @@ public class NiceVideoPlayer extends FrameLayout implements INiceVideoPlayer, Te
 
     /**
      * 进入小窗口播放，小窗口播放的实现原理与全屏播放类似。
-     */
+            */
     @Override
     public void enterTinyWindow() {
         if (mCurrentMode == MODE_TINY_WINDOW) return;
@@ -668,5 +671,9 @@ public class NiceVideoPlayer extends FrameLayout implements INiceVideoPlayer, Te
     //自己新增的方法
     public NiceVideoPlayerController getController() {
         return mController;
+    }
+
+    public String getUrl() {
+        return mUrl;
     }
 }

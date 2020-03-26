@@ -1,12 +1,12 @@
 apply plugin: 'com.android.library'
 
 android {
-    compileSdkVersion 28
-    buildToolsVersion "28.0.3"
+    compileSdkVersion 29
+    buildToolsVersion "29.0.2"
 
     defaultConfig {
         minSdkVersion 14
-        targetSdkVersion 28
+        targetSdkVersion 29
         versionCode 14
         versionName "1.9.4"
 
@@ -22,6 +22,9 @@ android {
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
     testImplementation 'junit:junit:4.12'
+     implementation project(':videolib')
+    implementation project(':reslib')
+    implementation project(':toolslib')
 
     implementation 'com.android.support:appcompat-v7:28.0.0'
     implementation 'com.android.support:appcompat-v7:28.0.0'
@@ -30,6 +33,6 @@ dependencies {
 
     //图片加载框架 https://github.com/bumptech/glide
     //implementation 'com.github.bumptech.glide:glide:3.7.0'
-    //implementation 'com.github.bumptech.glide:glide:4.9.0'
+    implementation 'com.github.bumptech.glide:glide:4.9.0'
     //annotationProcessor 'com.github.bumptech.glide:compiler:4.9.0'
 }

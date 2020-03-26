@@ -56,6 +56,21 @@ public class ManagerDao {
         return managerList;
     }
 
+
+    public int managerLogin(String name,String password) {
+        SQLiteDatabase db = mHelper.getWritableDatabase();
+        int id = 0;
+        String sql="select * from db_manager where m_name=? and m_password=?";
+        Cursor cursor=db.rawQuery(sql, new String[]{name,password});
+        if(cursor.moveToFirst()==true){
+            id = cursor.getInt(cursor.getColumnIndex("m_id"));
+            cursor.close();
+            db.close();
+            return id;
+        }
+        db.close();
+        return id;
+    }
     /**
      * 根据管理员名查询分类
      */

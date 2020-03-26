@@ -2,15 +2,18 @@ package com.haiming.paper.ui.activity;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.view.View;
+import android.util.Log;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.ImageView;
-import android.widget.LinearLayout;
 
 import com.haiming.paper.R;
 import com.haiming.paper.Utils.UIUtil;
+import com.haiming.paper.db.ManagerDao;
+import com.haiming.paper.db.UserDao;
+import com.haiming.paper.db.UserData;
+import com.haiming.paper.ui.MainActivity;
 
 import androidx.annotation.Nullable;
 import butterknife.ButterKnife;
@@ -20,14 +23,14 @@ public class LoginActivity extends BaseActivity {
     private ImageView loginIv;
     private EditText accountNumberEt;
     private EditText passwordNumberEt;
-    private LinearLayout loginLl;
     private Button userLoginInputBtn;
     private Button managerLoginInputBtn;
-    private Button loginGotoRegister;
     private CheckBox mCheckBox;
     private Intent mIntent;
     private String number;
     private String password;
+    private UserDao mUserDao;
+    private ManagerDao mManagerDao;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -48,21 +51,38 @@ public class LoginActivity extends BaseActivity {
         mCheckBox = findViewById(R.id.cb_agree);
         ImageView close = findViewById(R.id.iv_back);
 
-        close.setOnClickListener(v->finish());
+        mUserDao = new UserDao(this);
+        mManagerDao = new ManagerDao(this);
+        mIntent = new Intent(this, MainActivity.class);
 
-        userLoginInputBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if(initData()){
-                    UIUtil.showToast(LoginActivity.this,"登陆成功");
+        close.setOnClickListener(v -> finish());
+        userLoginInputBtn.setOnClickListener(v -> {
+            if (initData()) {
+                int id = mUserDao.userLogin(number, password);
+                Log.d("数据","用户登陆的id="+id);
+                if(id != 0){
+                    UserData.saveUserId(this,id);
+                    Log.d("数据","保存了用户Id");
+                    UIUtil.showToast(this, "登陆成功");
+                    startActivity(mIntent);
+                }else {
+                    UIUtil.showToast(this, "账号或密码不正确");
                 }
 
             }
+
         });
 
-        managerLoginInputBtn.setOnClickListener(v->{
-            if(initData()){
-                UIUtil.showToast(this,"管理员登陆成功");
+        managerLoginInputBtn.setOnClickListener(v -> {
+            if (initData()) {
+                int id = mManagerDao.managerLogin(number, password);
+                if(id != 0){
+                    UserData.saveUserId(this,id);
+                    UIUtil.showToast(this, "管理员登陆成功");
+                    startActivity(mIntent);
+                }else {
+                    UIUtil.showToast(this, "账号或密码不正确");
+                }
             }
 
         });
@@ -73,21 +93,20 @@ public class LoginActivity extends BaseActivity {
     private boolean initData() {
         number = accountNumberEt.getText().toString();
         password = passwordNumberEt.getText().toString();
-        if(number.isEmpty()){
-            UIUtil.showToast(LoginActivity.this,"请输入账号");
+        if (number.isEmpty()) {
+            UIUtil.showToast(LoginActivity.this, "请输入账号");
             return false;
         }
-        if(password.isEmpty()){
-            UIUtil.showToast(LoginActivity.this,"请输入密码");
+        if (password.isEmpty()) {
+            UIUtil.showToast(LoginActivity.this, "请输入密码");
             return false;
         }
-        if (!mCheckBox.isChecked()){
-            UIUtil.showToast(LoginActivity.this,"请勾选同意登陆");
+        if (!mCheckBox.isChecked()) {
+            UIUtil.showToast(LoginActivity.this, "请勾选同意登陆");
             return false;
         }
         return true;
     }
-
 
 
 }
