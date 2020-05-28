@@ -4,8 +4,8 @@ import android.content.Context;
 import android.util.Log;
 
 import com.haiming.paper.bean.Note;
-import com.haiming.paper.db.GroupDao;
 import com.haiming.paper.db.NoteDao;
+import com.haiming.paper.db.UserDao;
 import com.haiming.paper.thread.ThreadManager;
 
 import java.util.ArrayList;
@@ -13,12 +13,12 @@ import java.util.List;
 
 public class CarFragment extends BaseQATavFragment {
 
-    private GroupDao mGroupDao;
     private NoteDao mNoteDao;
-    private Context mContext ;
+    private Context mContext=getActivity();
+    private UserDao mUserDao;
 
-    public CarFragment(Context context){
-        this.mContext = context;
+    public CarFragment() {
+
     }
 
     @Override
@@ -27,16 +27,21 @@ public class CarFragment extends BaseQATavFragment {
             @Override
             public void run() {
                 mNoteDao = new NoteDao(mContext);
-//        int id = mGroupDao.queryGroupById(2);
-                if (mNoteDao != null){
-                    Log.d("数据","笔记已实例化");
+                mUserDao = new UserDao(mContext);
+                if (mNoteDao != null) {
                     List<Note> notes = new ArrayList<>();
-                    dataList = mNoteDao.queryNotesAll(2);
-                    for (Note note:dataList){
-                        Log.d("数据","dataList"+note.getContent());
+                    notes = mNoteDao.queryNotesAll(1);
+                    if (notes != null) {
+                        dataList.addAll(notes);
+                        Log.d("数据", "大小=" + dataList.size() + "");
                     }
-                }else {
-                    Log.d("数据","笔记未实例化");
+                    if (dataList != null || dataList.size() > 0) {
+                        for (Note note : dataList) {
+                            mUserList.add(mUserDao.queryUserById(note.getUserId()));
+                        }
+                    }
+                } else {
+                    Log.d("数据", "笔记未实例化");
                 }
 
             }
@@ -44,13 +49,4 @@ public class CarFragment extends BaseQATavFragment {
 
     }
 
-//    @Override
-//    protected void loadData() {
-//        super.loadData();
-//        for (int i= 0;i<10;i++){
-//            Note note = new Note();
-//            note.setContent("你好");
-//            dataList.add(note);
-//        }
-//    }
 }

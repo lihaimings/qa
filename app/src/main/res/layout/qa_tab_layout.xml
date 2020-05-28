@@ -10,7 +10,7 @@
     <net.lucode.hackware.magicindicator.MagicIndicator
         android:id="@+id/question_mi_tab"
         android:layout_width="match_parent"
-        android:layout_height="@dimen/x42"
+        android:layout_height="@dimen/x60"
         android:background="@drawable/question_list_bg"
         />
     <androidx.viewpager.widget.ViewPager
@@ -18,5 +18,20 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_below="@id/question_mi_tab"
+        />
+    <TextView
+        android:id="@+id/add_ask_iv"
+        android:layout_width="@dimen/x50"
+        android:layout_height="@dimen/x50"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentRight="true"
+        android:background="@drawable/next_answer_bg"
+        android:text="提问"
+        android:textColor="@color/color_e8e8e8"
+        android:textSize="@dimen/x15"
+        android:gravity="center"
+        android:layout_marginRight="@dimen/x17"
+        android:layout_marginBottom="@dimen/x40"
+        android:alpha="0.8"
         />
 </RelativeLayout>

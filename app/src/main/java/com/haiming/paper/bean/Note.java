@@ -18,6 +18,7 @@ public class Note implements Serializable {
     private int userId; //用户id
     private int answerSize; //回答的数量
     private String answerId;   //回答的id
+    private String answerDescription; //回答描述
 
     public int getId() {
         return id;
@@ -121,5 +122,13 @@ public class Note implements Serializable {
 
     public void setAnswerId(String answerId) {
         this.answerId = answerId;
+    }
+
+    public String getAnswerDescription() {
+        return answerDescription;
+    }
+
+    public void setAnswerDescription(String answerDescription) {
+        this.answerDescription = answerDescription;
     }
 }

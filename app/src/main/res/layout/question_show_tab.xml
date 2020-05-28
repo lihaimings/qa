@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/ll_question_have_answer"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@drawable/answer_question_description_list_bg"
+    android:orientation="vertical"
+    android:paddingHorizontal="@dimen/x11"
+    android:paddingTop="@dimen/x10"
+    android:paddingBottom="@dimen/x12">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/x20"
+        android:gravity="center_vertical"
+        android:orientation="horizontal">
+
+        <ImageView
+            android:id="@+id/answer_user_pic"
+            android:layout_width="@dimen/x20"
+            android:layout_height="@dimen/x20"
+            android:scaleType="fitXY" />
+
+        <TextView
+            android:id="@+id/answer_user_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/x4"
+            android:text="第62223位探险家"
+            android:textColor="@color/color_e8e8e8"
+            android:textSize="@dimen/x8" />
+
+        <TextView
+            android:id="@+id/rv_answer_question_time"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/x8"
+            android:text="15分钟前"
+            android:textColor="@color/color_e8e8e8"
+            android:textSize="@dimen/x8"
+            android:visibility="gone"
+
+            />
+    </LinearLayout>
+
+    <FrameLayout
+        android:id="@+id/fl_question_title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingTop="@dimen/x6"
+        android:paddingBottom="@dimen/x6">
+
+        <TextView
+            android:id="@+id/tv_problem_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/building"
+            android:textColor="@color/color_e8e8e8"
+            android:textSize="@dimen/x14"
+            android:textStyle="bold" />
+        <!--       <include layout="@layout/problem_detail_title" />-->
+    </FrameLayout>
+
+    <LinearLayout
+        android:id="@+id/ll_answer_question_description"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/answer_question_description"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ellipsize="end"
+            android:maxLines="2"
+            android:text="@string/building"
+            android:textColor="@color/color_e8e8e8"
+            android:textSize="@dimen/x10"
+            android:visibility="gone"
+            />
+
+        <com.sendtion.xrichtext.RichTextView
+            android:id="@+id/question_description"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:rt_view_text_color="@color/color_e8e8e8"
+            app:rt_view_text_size="@dimen/x10"
+            android:focusable="false"
+            />
+
+        <RelativeLayout
+            android:id="@+id/bottom_rl"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/x7"
+            android:gravity="center_vertical">
+
+            <TextView
+                android:id="@+id/answer_number"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="此提问共有5条回答"
+                android:textColor="@color/color8FCCFE" />
+
+            <ImageView
+                android:id="@+id/iv_dislike_btn"
+                android:layout_width="@dimen/x18"
+                android:layout_height="@dimen/x18"
+                android:layout_alignParentRight="true"
+                android:padding="@dimen/x2"
+                android:scaleType="fitXY"
+                android:src="@drawable/more_button" />
+        </RelativeLayout>
+    </LinearLayout>
+</LinearLayout>

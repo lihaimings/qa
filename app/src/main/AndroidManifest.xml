@@ -13,7 +13,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".ui.activity.QAAskQuestionActivity"
+        <activity android:name=".ui.activity.LoginRegisterActivity"
             android:configChanges="orientation|keyboardHidden|screenSize"
             >
             <intent-filter>
@@ -22,9 +22,23 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name=".ui.MainActivity"  />
         <activity android:name=".ui.activity.LoginActivity" />
         <activity android:name=".ui.activity.RegisterActivity" />
-        <activity android:name=".ui.MainActivity"/>
+        <activity android:name=".ui.activity.QAAskQuestionActivity"
+            android:configChanges="orientation|keyboardHidden|screenSize"
+            />
+        <activity android:name=".ui.activity.QAAnswerQuestionActivity"
+            android:configChanges="orientation|keyboardHidden|screenSize"
+            />
+        <activity android:name=".ui.activity.QADetailsListActivity"
+            android:configChanges="orientation|keyboardHidden|screenSize" />
+        <activity android:name=".ui.activity.QAInputAnswerActivity"
+            android:configChanges="orientation|keyboardHidden|screenSize" />
+        <activity android:name=".ui.activity.video.ModifyMyInformation" />
+        <activity android:name=".ui.activity.LookMyQuestionActivity"/>
+        <activity android:name=".ui.activity.LookMyAnswerActivity" />
+        <activity android:name=".ui.activity.UserListActvity" />
 
     </application>
 

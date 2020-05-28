@@ -16,7 +16,6 @@ import com.haiming.paper.db.UserData;
 import com.haiming.paper.ui.MainActivity;
 
 import androidx.annotation.Nullable;
-import butterknife.ButterKnife;
 
 public class LoginActivity extends BaseActivity {
 
@@ -36,7 +35,6 @@ public class LoginActivity extends BaseActivity {
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.login_layout_activity);
-        ButterKnife.bind(this);
         initView();
 
     }
@@ -62,9 +60,11 @@ public class LoginActivity extends BaseActivity {
                 Log.d("数据","用户登陆的id="+id);
                 if(id != 0){
                     UserData.saveUserId(this,id);
+                    UserData.saveIsManager(this,false);
                     Log.d("数据","保存了用户Id");
                     UIUtil.showToast(this, "登陆成功");
                     startActivity(mIntent);
+                    finish();
                 }else {
                     UIUtil.showToast(this, "账号或密码不正确");
                 }
@@ -76,8 +76,9 @@ public class LoginActivity extends BaseActivity {
         managerLoginInputBtn.setOnClickListener(v -> {
             if (initData()) {
                 int id = mManagerDao.managerLogin(number, password);
-                if(id != 0){
+                if(id > 0){
                     UserData.saveUserId(this,id);
+                    UserData.saveIsManager(this,true);
                     UIUtil.showToast(this, "管理员登陆成功");
                     startActivity(mIntent);
                 }else {

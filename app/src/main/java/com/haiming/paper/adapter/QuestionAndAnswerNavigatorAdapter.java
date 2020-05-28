@@ -14,23 +14,27 @@ import net.lucode.hackware.magicindicator.buildins.commonnavigator.abs.IPagerInd
 import net.lucode.hackware.magicindicator.buildins.commonnavigator.abs.IPagerTitleView;
 import net.lucode.hackware.magicindicator.buildins.commonnavigator.titles.SimplePagerTitleView;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import androidx.viewpager.widget.ViewPager;
 
 public class QuestionAndAnswerNavigatorAdapter extends CommonNavigatorAdapter {
 
-    protected String[] mTitles;
+   // protected String[] mTitles;
+    private List<String> mStringList = new ArrayList<>();
     protected ViewPager viewPager;
     private Context mContext;
 
-    public QuestionAndAnswerNavigatorAdapter(Context context, String[] mTitles, ViewPager viewPager) {
-        this.mTitles = mTitles;
+    public QuestionAndAnswerNavigatorAdapter(Context context,  ViewPager viewPager,List<String> strings) {
         this.viewPager = viewPager;
         this.mContext = context;
+        mStringList =strings;
     }
 
     @Override
     public int getCount() {
-        return mTitles.length;
+        return mStringList.size();
     }
 
     @Override
@@ -38,7 +42,7 @@ public class QuestionAndAnswerNavigatorAdapter extends CommonNavigatorAdapter {
         SimplePagerTitleView titleView = new SimplePagerTitleView(context);
         titleView.setNormalColor(UIUtil.getColor(mContext, R.color.color_e8e8e8));
         titleView.setSelectedColor(UIUtil.getColor(mContext, R.color.color_f7f7f7));
-        titleView.setText(mTitles[index]);
+        titleView.setText(mStringList.get(index));
         titleView.setPadding(0, UIUtil.getResources().getDimensionPixelOffset(R.dimen.x17), 0, 0);
         titleView.setTextSize(TypedValue.COMPLEX_UNIT_PX, UIUtil.getResources().getDimensionPixelSize(R.dimen.x12));
         titleView.setOnClickListener(view -> viewPager.setCurrentItem(index));

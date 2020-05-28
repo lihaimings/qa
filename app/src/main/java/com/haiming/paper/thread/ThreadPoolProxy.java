@@ -21,7 +21,7 @@ public class ThreadPoolProxy {
     public ThreadPoolProxy(int mCorePoolSize, int mMaximumPoolSize, long mKeepAliveTime) {
         this.mCorePoolSize = mCorePoolSize;
         this.mMaximumPoolSize = mMaximumPoolSize;
-        this.mKeepAliveTime = mKeepAliveTime;
+        this.mKeepAliveTime = 10;
     }
 
     private long mKeepAliveTime;

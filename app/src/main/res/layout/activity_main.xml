@@ -13,19 +13,17 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-        <com.google.android.material.tabs.TabLayout
-            android:id="@+id/main_tabs"
-            style="@style/MyCustomTabLayout"
-            android:layout_width="match_parent"
-            android:layout_height="@dimen/x44"
-            android:layout_alignParentBottom="true" />
-
         <androidx.viewpager.widget.ViewPager
             android:id="@+id/main_pager"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_above="@id/main_tabs" />
 
-
+        <com.google.android.material.tabs.TabLayout
+            android:id="@+id/main_tabs"
+            style="@style/MyCustomTabLayout"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/x44"
+            android:layout_alignParentBottom="true" />
     </RelativeLayout>
 </FrameLayout>

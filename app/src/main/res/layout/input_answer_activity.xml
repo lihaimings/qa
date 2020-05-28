@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:id="@+id/ll_top_bar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:orientation="vertical">
+
+        <View
+            android:id="@+id/bg_home_status_bar"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:background="@drawable/view_top_bar_bg" />
+
+        <include layout="@layout/problem_detail_top" />
+    </LinearLayout>
+
+        >
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_above="@id/rl_reward_coin_bar"
+        android:layout_below="@id/ll_top_bar"
+        android:background="@color/color_0F1621"
+        android:padding="@dimen/x13">
+
+        <TextView
+            android:id="@+id/tv_problem_title"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/x36"
+            android:layout_gravity="center_vertical"
+            android:gravity="center_vertical"
+            android:paddingLeft="@dimen/x5"
+            android:text="女朋友过生日送什么礼物好？"
+            android:textColor="@color/color_e8e8e8"
+            android:textSize="@dimen/x16" />
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/x36"
+            android:scaleType="fitXY"
+            android:src="@drawable/input_question_box" />
+
+        <com.sendtion.xrichtext.RichTextView
+            android:id="@+id/tv_problem_description"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/tv_problem_title"
+            app:rt_view_text_color="@color/color_e8e8e8"
+            app:rt_view_text_size="@dimen/x10" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/x1"
+            android:background="@color/color_e8e8e8"
+            android:layout_below="@id/tv_problem_description"
+            />
+
+        <com.sendtion.xrichtext.RichTextEditor
+            android:id="@+id/et_input_question_description"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_above="@+id/iv_question_add_video"
+            android:layout_below="@id/tv_problem_description"
+            android:maxLength="500"
+            android:paddingTop="@dimen/x12"
+            app:rt_editor_image_bottom="10"
+            app:rt_editor_image_height="500"
+            app:rt_editor_text_color="@color/color_e8e8e8"
+            app:rt_editor_text_init_hint="回答此问题"
+            app:rt_editor_text_line_space="6dp"
+            app:rt_editor_text_size="16sp" />
+
+        <ImageView
+            android:id="@+id/iv_question_add_video"
+            android:layout_width="@dimen/x60"
+            android:layout_height="@dimen/x60"
+            android:layout_alignParentBottom="true"
+            android:src="@drawable/add_video" />
+
+        <ImageView
+            android:id="@+id/iv_question_add_picture"
+            android:layout_width="@dimen/x60"
+            android:layout_height="@dimen/x60"
+            android:layout_alignParentBottom="true"
+            android:layout_marginStart="@dimen/x5"
+            android:layout_toRightOf="@id/iv_question_add_video"
+            android:src="@drawable/add_picture" />
+
+        <!--        <TextView-->
+        <!--            android:id="@+id/tv_how_ask_question"-->
+        <!--            android:layout_width="wrap_content"-->
+        <!--            android:layout_height="wrap_content"-->
+        <!--            android:layout_alignParentRight="true"-->
+        <!--            android:layout_alignParentBottom="true"-->
+        <!--            android:text="@string/how_ask"-->
+        <!--            android:textColor="@color/color_5ab4f1" />-->
+    </RelativeLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/x1"
+        android:layout_above="@id/rl_reward_coin_bar"
+        android:background="@color/color_e8e8e8" />
+
+    <Button
+        android:id="@+id/rl_reward_coin_bar"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/x42"
+        android:layout_alignParentBottom="true"
+        android:background="@drawable/problem__detail_bottom_bg"
+        android:gravity="center"
+        android:paddingStart="@dimen/x13"
+        android:text="提交回答"
+        android:textColor="@color/color_5ab4f1"
+        android:textSize="25sp">
+        <!--     <TextView-->
+        <!--        android:id="@+id/input_ask_question"-->
+        <!--        android:layout_width="wrap_content"-->
+        <!--        android:layout_height="wrap_content"-->
+        <!--        android:text="提交"-->
+        <!--        android:textColor="@color/color_5ab4f1"-->
+        <!--        android:textSize="25sp"-->
+        <!--        />-->
+    </Button>
+
+</RelativeLayout>

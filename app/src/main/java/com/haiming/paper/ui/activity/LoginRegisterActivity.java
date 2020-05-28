@@ -55,7 +55,6 @@ public class LoginRegisterActivity extends BaseActivity {
         });
 
         registerBtn.setOnClickListener(v -> {
-
             clickView(registerBtn, 2);
         });
 
@@ -77,6 +76,7 @@ public class LoginRegisterActivity extends BaseActivity {
             mIntent = new Intent(this, RegisterActivity.class);
         }
         startActivity(mIntent);
+        finish();
     }
 
 }

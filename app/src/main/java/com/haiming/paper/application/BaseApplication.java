@@ -14,6 +14,7 @@ import com.haiming.paper.Utils.CommonUtil;
 import com.haiming.paper.Utils.UIUtil;
 import com.haiming.paper.db.InitData;
 import com.haiming.paper.thread.ThreadManager;
+import com.hjq.toast.ToastUtils;
 import com.sendtion.xrichtext.IImageLoader;
 import com.sendtion.xrichtext.XRichText;
 
@@ -61,28 +62,31 @@ public class BaseApplication extends MultiDexApplication {
         mMainHandler = new Handler();
         processName = CommonUtil.getProcessName(this);
 
+        ToastUtils.init(this);
 
         //设置根据二进制设置图片
         initPic();
 
-        SharedPreferences preferences=getSharedPreferences("first", Context.MODE_PRIVATE);
-        boolean firstLogin = preferences.getBoolean("login",true);
-        if (firstLogin){
+        // 如何第一次安装，则初始化数据
+        SharedPreferences preferences = getSharedPreferences("first", Context.MODE_PRIVATE);
+        boolean firstLogin = preferences.getBoolean("login", true);
+        if (firstLogin) {
             ThreadManager.getLongPool().execute(new Runnable() {
                 @Override
                 public void run() {
-                    Log.d("数据","开始执行插入数据");
+                    Log.d("数据", "开始执行插入数据");
                     initData = new InitData(mContext);
                     initData.initGroup();
                     initData.initManager();
                     initData.initUser();
                     initData.initAsk();
+                    initData.initAnswer(mContext);
                 }
             });
         }
 
-        SharedPreferences.Editor sharedPreferences = getSharedPreferences("first",Context.MODE_PRIVATE).edit();
-        sharedPreferences.putBoolean("login",false);
+        SharedPreferences.Editor sharedPreferences = getSharedPreferences("first", Context.MODE_PRIVATE).edit();
+        sharedPreferences.putBoolean("login", false);
         sharedPreferences.commit();
 
     }
@@ -91,6 +95,7 @@ public class BaseApplication extends MultiDexApplication {
         XRichText.getInstance().setImageLoader(new IImageLoader() {
             @Override
             public void loadImage(String imagePath, ImageView imageView, int imageHeight) {
+                Log.d("图片","高度"+imageHeight);
                 if (imageHeight > 0) {//固定高度
                     RelativeLayout.LayoutParams lp = new RelativeLayout.LayoutParams(
                             FrameLayout.LayoutParams.MATCH_PARENT, imageHeight);//固定图片高度，记得设置裁剪剧中
@@ -100,10 +105,14 @@ public class BaseApplication extends MultiDexApplication {
 
                     Glide.with(getApplicationContext()).load(UIUtil.string2byte(imagePath)).centerCrop().into(imageView);
                 } else {//自适应高度
-                    Glide.with(getApplicationContext()).load(UIUtil.string2byte(imagePath)).centerCrop()
-                            .into(imageView);
-//                    Glide.with(getApplicationContext()).load(UIUtil.string2Bitmap(imagePath))
-//                            .placeholder(R.mipmap.img_load_fail).error(R.mipmap.img_load_fail).into(new TransformationScale(imageView));
+                    RelativeLayout.LayoutParams lp = new RelativeLayout.LayoutParams(
+                            FrameLayout.LayoutParams.MATCH_PARENT, FrameLayout.LayoutParams.WRAP_CONTENT);//固定图片高度，记得设置裁剪剧中
+                    lp.bottomMargin = 10;//图片的底边距
+                    imageView.setLayoutParams(lp);
+                    Glide.with(getApplicationContext()).load(UIUtil.string2byte(imagePath)).into(imageView);
+
+//                    Glide.with(getApplicationContext()).asBitmap().load(UIUtil.string2Bitmap(imagePath)).centerCrop()
+//                            .into(new TransformationScale(imageView));
                 }
             }
         });

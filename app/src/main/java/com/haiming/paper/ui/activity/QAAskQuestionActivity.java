@@ -25,6 +25,7 @@ import android.widget.TextView;
 
 import com.haiming.paper.R;
 import com.haiming.paper.Utils.CommonUtil;
+import com.haiming.paper.Utils.PopupWindowUtil;
 import com.haiming.paper.Utils.StringUtils;
 import com.haiming.paper.Utils.UIUtil;
 import com.haiming.paper.adapter.TextWatcherAdapter;
@@ -32,10 +33,15 @@ import com.haiming.paper.bean.Group;
 import com.haiming.paper.bean.Note;
 import com.haiming.paper.db.GroupDao;
 import com.haiming.paper.db.NoteDao;
+import com.haiming.paper.db.UserData;
+import com.haiming.paper.ui.view.InsertAskEvent;
+import com.hjq.toast.ToastUtils;
 import com.sendtion.xrichtext.RichTextEditor;
 import com.tbruyelle.rxpermissions2.RxPermissions;
 import com.youcheyihou.videolib.NiceUtil;
 import com.youcheyihou.videolib.NiceVideoPlayerManager;
+
+import org.greenrobot.eventbus.EventBus;
 
 import java.util.Date;
 import java.util.List;
@@ -56,6 +62,7 @@ public class QAAskQuestionActivity extends BaseActivity {
     private ImageView ivBack;
     private TextView pageTitle;
     private EditText etInputQuestion;
+    private EditText etInputGroup;
     private RichTextEditor etInputQuestionDescription;
     private ImageView ivQuestionAddVideo;
     private ImageView ivQuestionAddPicture;
@@ -98,6 +105,7 @@ public class QAAskQuestionActivity extends BaseActivity {
         pageTitle = findViewById(R.id.page_title);
         ivBack = findViewById(R.id.iv_back);
         etInputQuestion = findViewById(R.id.et_input_question);
+        etInputGroup = findViewById(R.id.et_input_group);
         etInputQuestionDescription = findViewById(R.id.et_input_question_description);
         ivQuestionAddVideo = findViewById(R.id.iv_question_add_video);
         ivQuestionAddPicture = findViewById(R.id.iv_question_add_picture);
@@ -105,10 +113,14 @@ public class QAAskQuestionActivity extends BaseActivity {
         rlInputAsk = findViewById(R.id.rl_reward_coin_bar);
         pageTitleRl = findViewById(R.id.page_title_rl);
 
+        tvHowAskQuestion.setOnClickListener(v->{
+            PopupWindowUtil.showHowQAndADislikeWindow(this,tvHowAskQuestion);
+        });
         bgHomeStatusBar.getLayoutParams().height = UIUtil.getStatusBarHeight(this);
         ivBack.setOnClickListener(v -> finish());
         //点击后Hint自动消失
         etInputQuestion.setOnFocusChangeListener(UIUtil.onFocusAutoClearHintListener());
+        etInputGroup.setOnFocusChangeListener(UIUtil.onFocusAutoClearHintListener());
         etInputQuestionDescription.setOnFocusChangeListener(UIUtil.onFocusAutoClearHintListener());
         etInputQuestion.addTextChangedListener(new TextWatcherAdapter() {
             @Override
@@ -116,7 +128,17 @@ public class QAAskQuestionActivity extends BaseActivity {
                 super.afterTextChanged(s);
                 int length = s.toString().trim().length();
                 if (length >= 50) {
-                    UIUtil.showToast(QAAskQuestionActivity.this, "字数达到最大值啦");
+                    ToastUtils.show("最多只能输入50个字");
+                }
+            }
+        });
+        etInputGroup.addTextChangedListener(new TextWatcherAdapter() {
+            @Override
+            public void afterTextChanged(Editable s) {
+                super.afterTextChanged(s);
+                int length = s.toString().trim().length();
+                if (length >= 5) {
+                    ToastUtils.show("最多只能输入5个字");
                 }
             }
         });
@@ -141,33 +163,34 @@ public class QAAskQuestionActivity extends BaseActivity {
         insertDialog.setCanceledOnTouchOutside(false);
 
         try {
-//            Intent intent = getIntent();
-//            flag = intent.getIntExtra("flag", 0);//0新建，1编辑
-            flag=1;
+            Intent intent = getIntent();
+            flag = intent.getIntExtra("flag", 0);//0新建，1编辑
+           // flag=1;
             if (flag == 1) {//编辑
                 pageTitle.setText("编辑提问");
+                rlInputAsk.setText("确定修改");
                 // 拿到之前的提问内容
-//                Bundle bundle = intent.getBundleExtra("data");
-//                note = (Note) bundle.getSerializable("note");
-                note=noteDao.queryNotes(21);
+                Bundle bundle = intent.getBundleExtra("data");
+                note = (Note) bundle.getSerializable("note");
+               // note=noteDao.queryNotes(21);
 
                 if (note != null) {
                     myTitle = note.getTitle();
                     myContent = note.getContent();
                     myNoteTime = note.getCreateTime();
-                    Group group = groupDao.queryGroupById(note.getGroupId());
-//                    if (group != null) {
-//                        myGroupName = group.getName();
-//                        tv_new_group.setText(myGroupName);
-//                    }
 
                     loadingDialog = new ProgressDialog(this);
                     loadingDialog.setMessage("数据加载中...");
                     loadingDialog.setCanceledOnTouchOutside(false);
                     loadingDialog.show();
 
-//                    tv_new_time.setText(note.getCreateTime());
+//
                     etInputQuestion.setText(note.getTitle());
+                    Group group = groupDao.queryGroupById(note.getGroupId());
+                    if (group != null) {
+                        myGroupName = group.getName();
+                        etInputGroup.setText(myGroupName);
+                    }
                     etInputQuestionDescription.post(new Runnable() {
                         @Override
                         public void run() {
@@ -182,7 +205,6 @@ public class QAAskQuestionActivity extends BaseActivity {
 ////                }
 //                tv_new_group.setText(myGroupName); //分类名
                 myNoteTime = CommonUtil.date2string(new Date());
-//                tv_new_time.setText(myNoteTime);  //创建时间
             }
         } catch (Exception e) {
             e.printStackTrace();
@@ -204,6 +226,9 @@ public class QAAskQuestionActivity extends BaseActivity {
         startActivityForResult(intent, 1);
     }
 
+    /**
+     * 调用视频
+     */
     public void addVideo() {
         Intent intent = new Intent(Intent.ACTION_PICK, android.provider.MediaStore.Video.Media.EXTERNAL_CONTENT_URI);
         startActivityForResult(intent, 2);
@@ -325,13 +350,10 @@ public class QAAskQuestionActivity extends BaseActivity {
                                     String[] viedoPath = StringUtils.getVideoImage(text);
                                     if (viedoPath[1] != null){
                                         etInputQuestionDescription.imagePath=viedoPath[1];
-                                        Log.d("数据","图片="+viedoPath[1]);
                                     }
                                     if (viedoPath[0] != null){
                                         etInputQuestionDescription.addVideoViewAtIndex(etInputQuestionDescription.getLastIndex(), viedoPath[0]);
-                                        Log.d("数据","视频="+viedoPath[0]);
                                     }
-
                                 } else {
                                     etInputQuestionDescription.addEditTextAtIndex(etInputQuestionDescription.getLastIndex(), text);
                                 }
@@ -391,76 +413,88 @@ public class QAAskQuestionActivity extends BaseActivity {
      * 拿到全部数据，并提交给数据库
      */
     private void saveNoteData(boolean isBackground) {
+        if(!checkTitle()){
+            ToastUtils.show("提问标题不能为空");
+            return;
+        }
         String noteTitle = etInputQuestion.getText().toString();
         String noteContent = getEditData();
+//        List<String> content =  StringUtils.spliteString(noteContent);
+//        if ((content.size() == 0 || (content.size() == 1 && content.get(0).trim().isEmpty()))){
+//            ToastUtils.show("请输入内容");
+//            return;
+//        }
         //分组名
-        String groupName = "首页";
+        String groupName = etInputGroup.getText().toString().trim();
         //创建时间
 //        String noteTime = tv_new_time.getText().toString();
 
         try {
+            int groupId;
             Group group = groupDao.queryGroupByName(groupName);
             if (group != null) {
                 Log.d("数据", "group不为空");
-                if (noteTitle.length() == 0) {//如果标题为空，则截取内容为标题
-                    if (noteContent.length() > cutTitleLength) {
-                        noteTitle = noteContent.substring(0, cutTitleLength);
-                    } else if (noteContent.length() > 0) {
-                        noteTitle = noteContent;
-                    }
-                }
-                int groupId = group.getId();
-                note.setTitle(noteTitle);
-                note.setContent(noteContent);
-                note.setGroupId(groupId);
-                note.setGroupName(groupName);
-                note.setType(2);
-                //todo 不是白色
-                note.setBgColor("#FFFFFF");
-                note.setIsEncrypt(0);
-                note.setCreateTime(CommonUtil.date2string(new Date()));
-                note.setUpdateTime(CommonUtil.date2string(new Date()));
-                //todo 还有用户id
-                note.setUserId(1);
-                note.setAnswerSize(0);
-                note.setAnswerId(null);
-                if (flag == 0) {//新建笔记
-                    if (noteTitle.length() == 0 || noteContent.length() == 0) {
-                        if (!isBackground) {
-                            UIUtil.showToast(this, "请输入内容");
-                        }
-                    } else {
-                        //提交到数据库
-//                        long noteId = noteDao.insertNote(note);
-//                        Log.i("数据", "笔记noteId: "+noteId);
-                        //查询新建笔记id，防止重复插入
-//                        note.setId((int) noteId);
-                        noteDao.insertUser(note);
-                        Log.i("数据", "已执行增加");
-                        flag = 1;//插入以后只能是编辑
-                        if (!isBackground) {
-                            Intent intent = new Intent();
-                            setResult(RESULT_OK, intent);
-                            // todo finish();
-                        }
-                        UIUtil.showToast(this, "提交成功");
-                    }
-                } else if (flag == 1) {//编辑笔记
-                    if (!noteTitle.equals(myTitle) || !noteContent.equals(myContent)
-//                            || !groupName.equals(myGroupName) || !noteTime.equals(myNoteTime)
-                    ) {
-                        noteDao.updateNote(note);
-                    }
-                    if (!isBackground) {
-                        finish();
-                    }
-                }
+                groupId = group.getId();
             } else {
-                Log.d("数据", "group为空");
+               groupDao.insertGroup(groupName);
+               Group group1 = groupDao.queryGroupByName(groupName);
+               groupId = group1.getId();
+                EventBus.getDefault().post(new InsertAskEvent());
+            }
+            note.setTitle(noteTitle);
+            note.setContent(noteContent);
+            note.setGroupId(groupId);
+            note.setGroupName(groupName);
+            note.setType(2);
+            //todo 不是白色
+            note.setBgColor("#FFFFFF");
+            note.setIsEncrypt(0);
+            note.setCreateTime(CommonUtil.date2string(new Date()));
+            note.setUpdateTime(CommonUtil.date2string(new Date()));
+            note.setUserId(UserData.getUserId(this));
+            note.setAnswerSize(0);
+            note.setAnswerId(null);
+            if (flag == 0) {//新建笔记
+                if (noteTitle.length() == 0 || noteContent.length() == 0) {
+                    if (!isBackground) {
+                        UIUtil.showToast(this, "请输入内容");
+                    }
+                } else {
+                    noteDao.insertUser(note);
+                    Log.i("数据", "已执行增加");
+                    flag = 1;//插入以后只能是编辑
+                    if (!isBackground) {
+                        Intent intent = new Intent();
+                        setResult(RESULT_OK, intent);
+                         finish();
+                    }
+                    UIUtil.showToast(this, "提交成功");
+                }
+            } else if (flag == 1) {//编辑笔记
+                if (!noteTitle.equals(myTitle) || !noteContent.equals(myContent)
+//                            || !groupName.equals(myGroupName) || !noteTime.equals(myNoteTime)
+                ) {
+                    noteDao.updateNote(note);
+                }
+                if (!isBackground) {
+                    finish();
+                }
             }
         } catch (Exception e) {
             e.printStackTrace();
         }
+    }
+
+    private boolean checkTitle() {
+        String title =etInputQuestion.getText().toString().trim();
+        if (title.isEmpty() || title == null){
+            return false;
+        }
+        String  group = etInputGroup.getText().toString().trim();
+        if (group.isEmpty() || group == null){
+            return false;
+        }
+        return true;
     }
 
     @Override
@@ -565,8 +599,10 @@ public class QAAskQuestionActivity extends BaseActivity {
                         if (imagePath.contains("thumss")){
                             imagePath = StringUtils.getVideoString(imagePath);
                             etInputQuestionDescription.imagePath=imagePath;
+                            Log.d("视频的截图",imagePath);
                         }else {
                             etInputQuestionDescription.insertVideo(imagePath);
+                            Log.d("视频的播放",imagePath);
                         }
 
                     }

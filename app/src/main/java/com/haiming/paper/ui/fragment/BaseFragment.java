@@ -36,14 +36,8 @@ public abstract class BaseFragment extends Fragment {
         initView();
     }
 
-    protected abstract void initView();
-
-    @Override
-    public void setUserVisibleHint(boolean isVisibleToUser) {
-        super.setUserVisibleHint(isVisibleToUser);
-        if (isVisibleToUser){
-            loadData();
-        }
+    protected void initView(){
+        loadData();
     }
 
     protected abstract void loadData();

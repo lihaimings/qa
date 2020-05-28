@@ -22,7 +22,7 @@
         android:layout_height="wrap_content"
         android:textSize="@dimen/x9"
         android:textColor="@color/color_f7f7f7"
-        android:text="@string/dislike"
+        android:text="确定删除？"
         android:layout_marginTop="@dimen/x4"
         />
 </LinearLayout>

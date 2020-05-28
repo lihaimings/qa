@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/dislike_this_q_and_a"
+    android:orientation="vertical"
+    android:layout_width="@dimen/x76"
+    android:layout_height="@dimen/x90"
+    android:background="@drawable/sort_popup_window"
+    android:gravity="center_horizontal"
+    >
+
+    <Button
+        android:id="@+id/delete_btn"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:background="@color/translate"
+        android:text="删除"
+        android:textColor="@color/color_e8e8e8"
+        android:textStyle="bold"
+        android:gravity="center"
+        />
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/x1"
+        android:background="@color/white"
+        android:layout_marginLeft="@dimen/x5"
+        android:layout_marginRight="@dimen/x5"
+        />
+    <Button
+        android:id="@+id/update_btn"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:background="@color/translate"
+        android:text="修改"
+        android:textColor="@color/color_e8e8e8"
+        android:textStyle="bold"
+        android:gravity="center"
+        />
+
+</LinearLayout>

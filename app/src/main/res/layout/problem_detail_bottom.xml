@@ -13,8 +13,8 @@
         android:layout_weight="1"
         android:layout_marginTop="@dimen/x6"
         android:layout_marginLeft="@dimen/x13"
-        android:background="@drawable/blue_main_button"
-        android:text="邀请回答"
+        android:background="@drawable/yellow_problem_button"
+        android:text="查看其他提问"
         android:textSize="@dimen/x11"
         android:textColor="@color/color_e8e8e8"
         />
@@ -31,17 +31,4 @@
         android:textSize="@dimen/x11"
         android:textColor="@color/color_e8e8e8"
         />
-    <Button
-        android:id="@+id/btn_attention_problem"
-        android:layout_width="0dp"
-        android:layout_height="@dimen/x28"
-        android:layout_weight="1"
-        android:layout_marginTop="@dimen/x6"
-        android:layout_marginRight="@dimen/x13"
-        android:background="@drawable/yellow_problem_button"
-        android:text="关注问题"
-        android:textSize="@dimen/x11"
-        android:textColor="@color/color_e8e8e8"
-        />
-
 </LinearLayout>

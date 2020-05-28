@@ -17,12 +17,14 @@ import android.text.TextUtils;
 import android.text.style.CharacterStyle;
 import android.text.style.ForegroundColorSpan;
 import android.util.AttributeSet;
+import android.util.DisplayMetrics;
 import android.util.Log;
 import android.util.TypedValue;
 import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.WindowManager;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.EditText;
 import android.widget.ImageView;
@@ -74,7 +76,7 @@ public class RichTextEditor extends ScrollView {
      * 自定义属性
      **/
     //插入的图片显示高度
-    private int rtImageHeight = 500;
+    private int rtImageHeight;
     //两张相邻图片间距
     private int rtImageBottom = 10;
     //文字相关属性，初始提示信息，文字大小和颜色
@@ -102,7 +104,7 @@ public class RichTextEditor extends ScrollView {
 
         //获取自定义属性
         TypedArray ta = context.obtainStyledAttributes(attrs, R.styleable.RichTextEditor);
-        rtImageHeight = ta.getInteger(R.styleable.RichTextEditor_rt_editor_image_height, 500);
+        rtImageHeight = ta.getInteger(R.styleable.RichTextEditor_rt_editor_image_height, 0);
         rtImageBottom = ta.getInteger(R.styleable.RichTextEditor_rt_editor_image_bottom, 10);
         rtTextSize = ta.getDimensionPixelSize(R.styleable.RichTextEditor_rt_editor_text_size, 16);
         //rtTextSize = ta.getInteger(R.styleable.RichTextView_rt_view_text_size, 16);
@@ -127,7 +129,7 @@ public class RichTextEditor extends ScrollView {
         setupLayoutTransitions();//禁止载入动画
         LayoutParams layoutParams = new LayoutParams(LayoutParams.MATCH_PARENT,
                 LayoutParams.WRAP_CONTENT);
-        allLayout.setPadding(50, 15, 50, 15);//设置间距，防止生成图片时文字太靠边，不能用margin，否则有黑边
+        allLayout.setPadding(15, 0, 0, 0);//设置间距，防止生成图片时文字太靠边，不能用margin，否则有黑边
         addView(allLayout, layoutParams);
 
         // 2. 初始化键盘退格监听
@@ -375,7 +377,6 @@ public class RichTextEditor extends ScrollView {
     /**
      * 插入一张图片
      */
-    //todo,到时这是传的是图片二进制string
     public void insertImage(String imagePath) {
         //bitmap == null时，可能是网络图片，不能做限制
         if (TextUtils.isEmpty(imagePath)) {
@@ -558,9 +559,12 @@ public class RichTextEditor extends ScrollView {
             final RelativeLayout imageLayout = createImageLayout();
             DataImageView imageView = imageLayout.findViewById(R.id.edit_imageView);
 
-            byte[] bytes = string2byte(imagePath);
+            Bitmap bitmap = string2Bitmap(imagePath);
+//            imageView.getLayoutParams().width=getScreenWidth(getContext());
+//            imageView.getLayoutParams().height = getScreenWidth(getContext()) *(bitmap.getHeight()/bitmap.getWidth());
+            Glide.with(getContext()).load(string2byte(imagePath)).into(imageView);
 
-            Glide.with(getContext()).load(bytes).into(imageView);
+           // XRichText.getInstance().loadImage(imagePath, imageView, rtImageHeight);
             imageView.setAbsolutePath(imagePath);
             allLayout.addView(imageLayout, index);
         } catch (Exception e) {
@@ -611,6 +615,20 @@ public class RichTextEditor extends ScrollView {
         return bytes;
     }
 
+    public  Bitmap string2Bitmap(String strByte){
+        if (strByte.isEmpty()) {
+            return null;
+        }
+        byte[] bytes = new byte[0];
+        Bitmap bitmap = null;
+        try {
+            bytes = strByte.getBytes("ISO-8859-1");
+            bitmap = BitmapFactory.decodeByteArray(bytes,0,bytes.length,null);
+        } catch (UnsupportedEncodingException e) {
+            e.printStackTrace();
+        }
+        return bitmap;
+    }
     /**
      * 根据view的宽度，动态缩放bitmap尺寸
      *
@@ -760,17 +778,25 @@ public class RichTextEditor extends ScrollView {
             @Override
             public void onFocusChange(View v, boolean hasFocus) {
                 EditText textView = (EditText) v;
-                String hint;
+                String hint = "";
                 if (hasFocus) {
                     hint = textView.getHint().toString();
                     textView.setTag(hint);
                     textView.setHint("");
                 } else {
-                    hint = textView.getTag().toString();
-                    textView.setHint(hint);
+                        hint = textView.getTag().toString();
+                        // textView.setHint(hint);
                 }
             }
         };
+    }
+
+    public  int getScreenWidth(Context context)
+    {
+        WindowManager wm = (WindowManager) context.getSystemService(Context.WINDOW_SERVICE);
+        DisplayMetrics outMetrics = new DisplayMetrics();
+        wm.getDefaultDisplay().getMetrics(outMetrics);
+        return outMetrics.widthPixels;
     }
 
     public int getRtImageHeight() {

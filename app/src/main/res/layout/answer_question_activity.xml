@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:id="@+id/top_ll"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+        <View
+            android:id="@+id/state_view"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:background="@color/color0B1529"
+            />
+
+        <include
+            android:id="@+id/top_title"
+            layout="@layout/problem_detail_top" />
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/top_ll"
+        android:background="@drawable/question_and_answer_bg">
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/answer_item_rv"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:descendantFocusability="afterDescendants"
+            android:paddingLeft="@dimen/x10"
+            android:paddingTop="@dimen/x10"
+            android:paddingEnd="@dimen/x10" />
+    </LinearLayout>
+
+</RelativeLayout>

@@ -1,6 +1,8 @@
 package com.haiming.paper.bean;
 
-public class User {
+import java.io.Serializable;
+
+public class User implements Serializable {
 
     // id
     private int id;
@@ -22,6 +24,26 @@ public class User {
 
     // 是否管理员 0不是 1是
     private int isManager;
+
+    private String imagePath;
+
+    private String number;
+
+    public String getNumber() {
+        return number;
+    }
+
+    public void setNumber(String number) {
+        this.number = number;
+    }
+
+    public String getImagePath() {
+        return imagePath;
+    }
+
+    public void setImagePath(String imagePath) {
+        this.imagePath = imagePath;
+    }
 
     public int getId() {
         return id;
@@ -77,5 +99,19 @@ public class User {
 
     public void setSex(String sex) {
         this.sex = sex;
+    }
+
+    @Override
+    public String toString() {
+        return "User{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", password='" + password + '\'' +
+                ", email='" + email + '\'' +
+                ", signature='" + signature + '\'' +
+                ", sex='" + sex + '\'' +
+                ", isManager=" + isManager +
+                ", imagePath='" + imagePath + '\'' +
+                '}';
     }
 }

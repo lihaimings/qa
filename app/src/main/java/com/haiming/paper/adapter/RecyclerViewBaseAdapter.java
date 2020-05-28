@@ -1,6 +1,7 @@
 package com.haiming.paper.adapter;
 
 import android.content.Context;
+import android.util.Log;
 
 import com.haiming.paper.Utils.UIUtil;
 
@@ -14,7 +15,7 @@ abstract class RecyclerBaseAdapter<M, VH extends RecyclerView.ViewHolder> extend
     protected List<M> mDataList = new ArrayList<>();
 //    private GlideRequests mRequestManager;//Glide加载图片
     private OnItemClickedListener<M> mOnItemClickedListener;
-    private Context mContext;
+    public Context mContext;
 
 //    @NonNull
 //    public GlideRequests getRequestManager() {
@@ -43,10 +44,12 @@ abstract class RecyclerBaseAdapter<M, VH extends RecyclerView.ViewHolder> extend
      */
     public void updateList(List<M> list) {
         mDataList.clear();
+        Log.d("更新","设配器大小"+list.size());
         if (!UIUtil.isListBlank(list)) {
             mDataList.addAll(list);
         }
         notifyDataSetChanged();
+
     }
 
     /**

@@ -3,37 +3,11 @@
      android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <RelativeLayout
-        android:id="@+id/rl_sort_answers"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        >
-    <TextView
-        android:id="@+id/tv_sort_answers"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textSize="@dimen/x8"
-        android:textColor="@color/color_e8e8e8"
-        android:layout_alignParentRight="true"
-        android:text="@string/sort_way"
-        android:layout_marginRight="@dimen/x6"
-        />
-
-    <ImageView
-        android:id="@+id/iv_sort_answer_pic"
-        android:layout_width="@dimen/x4"
-        android:layout_height="@dimen/x4"
-        android:src="@drawable/sort_answers_pic"
-        android:layout_alignParentRight="true"
-        android:layout_alignBottom="@id/tv_sort_answers"
-        />
-    </RelativeLayout>
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rv_answer_question_list"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@id/rl_sort_answers"
         />
 
 </RelativeLayout>

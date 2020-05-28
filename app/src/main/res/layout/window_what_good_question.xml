@@ -15,6 +15,7 @@
         android:src="@drawable/close_dislike_reason_window_btn"
         android:paddingLeft="@dimen/x3"
         android:paddingTop="@dimen/x3"
+        android:background="@color/white"
         />
    <LinearLayout
        android:id="@+id/ll_good_question"

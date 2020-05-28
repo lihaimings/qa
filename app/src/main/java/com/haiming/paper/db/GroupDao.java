@@ -100,8 +100,10 @@ public class GroupDao {
                 group.setIsEncrypt(encrypt);
                 group.setCreateTime(createTime);
                 group.setUpdateTime(updateTime);
+                Log.d("分组","查询分类成功");
             }
         } catch (Exception e) {
+            Log.d("分组","查询分类异常");
             e.printStackTrace();
         } finally {
             if (cursor != null && !cursor.isClosed()) {
@@ -193,9 +195,16 @@ public class GroupDao {
     public void insertGroup(String groupName) {
         SQLiteDatabase db = helper.getWritableDatabase();
 
+//        db.execSQL("create table db_group(g_id integer primary key autoincrement, "
+//        +
+//                "g_name varchar,
+//                g_order integer,
+//                g_color varchar,
+//                g_encrypt integer," +
+//                "g_create_time datetime, g_update_time datetime )");
         Cursor cursor = null;
         try {
-            cursor = db.query("group", null, "g_name=?", new String[]{groupName}, null, null, null);
+            cursor = db.query("db_group", null, "g_name=?", new String[]{groupName}, null, null, null);
             if (!cursor.moveToNext()) {//如果订单不存在
                 ContentValues values = new ContentValues();
                 values.put("g_name", groupName);
@@ -204,8 +213,10 @@ public class GroupDao {
                 values.put("g_create_time", CommonUtil.date2string(new Date()));
                 values.put("g_update_time", CommonUtil.date2string(new Date()));
                 db.insert("db_group", null, values);
+                Log.d("分组","增加分类成功");
             }
         } catch (Exception e) {
+            Log.d("分组","增加分类异常");
             e.printStackTrace();
         } finally {
             if (cursor != null && !cursor.isClosed()) {

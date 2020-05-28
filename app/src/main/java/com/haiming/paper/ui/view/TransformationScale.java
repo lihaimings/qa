@@ -1,6 +1,7 @@
 package com.haiming.paper.ui.view;
 
 import android.graphics.Bitmap;
+import android.util.Log;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 
@@ -26,6 +27,9 @@ public class TransformationScale extends ImageViewTarget<Bitmap> {
             //获取原图的宽高
             int width = resource.getWidth();
             int height = resource.getHeight();
+
+            Log.d("图片","原图的宽高="+width+","+height);
+
 
             //获取imageView的宽
             int imageViewWidth = target.getWidth();

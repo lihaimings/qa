@@ -1,12 +1,8 @@
 package com.haiming.paper.bean;
 
-public class Answer {
+import java.io.Serializable;
 
-    //    db.execSQL("create table db_answer
-//    (a_id integer primary key autoincrement,
-//    a_note_id integer,
-//    a_content varchar,
-//    a_user_id integer)");
+public class Answer implements Serializable {
 
     private int answerId; //回答id
     private int answerNoteId;

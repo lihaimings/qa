@@ -52,6 +52,13 @@ public class SelectVideoActivity  extends AppCompatActivity {
         });
 
 
+        mNiceVideoPlayer.setPlayerType(NiceVideoPlayer.TYPE_NATIVE);
+        String videoUrl = "http://tanzi27niu.cdsb.mobi/wps/wp-content/uploads/2017/05/2017-05-17_17-33-30.mp4";
+        mNiceVideoPlayer.setUp(videoUrl,null);
+        TxVideoPlayerController controller = new TxVideoPlayerController(this);
+        Glide.with(this).load( "https://i0.hdslb.com/bfs/archive/9478d20a83a229bc1da8a195040e10c3e7aefee1.jpg@1100w_484h_1c_100q.jpg " ).into(controller.imageView());
+        mNiceVideoPlayer.setController(controller);
+
     }
 
     @Override

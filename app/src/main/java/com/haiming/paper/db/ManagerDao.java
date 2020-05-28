@@ -27,19 +27,25 @@ public class ManagerDao {
 
         Manager manager;
         Cursor cursor = null;
+//            db.execSQL("create table db_manager(m_id integer primary key autoincrement,m_name varchar,m_number varchar"+
+//                    "m_password varchar,m_isManager varchar,u_image varchar)");
         try {
             cursor = db.query("db_manager", null, null, null, null, null, null);
             while (cursor.moveToNext()) {
                 int managerId = cursor.getInt(cursor.getColumnIndex("m_id"));
                 String managerName = cursor.getString(cursor.getColumnIndex("m_name"));
+                String managerNumber = cursor.getString(cursor.getColumnIndex("m_number"));
                 String managerPassword = cursor.getString(cursor.getColumnIndex("m_password"));
                 int managerIsManager = cursor.getInt(cursor.getColumnIndex("m_isManager"));
+                String managerImage = cursor.getString(cursor.getColumnIndex("u_image"));
                 //生成一个类
                 manager = new Manager();
                 manager.setId(managerId);
+                manager.setNumber(managerNumber);
                 manager.setName(managerName);
                 manager.setPassword(managerPassword);
                 manager.setManager(managerIsManager);
+                manager.setImagePath(managerImage);
                 managerList.add(manager);
             }
 
@@ -57,12 +63,12 @@ public class ManagerDao {
     }
 
 
-    public int managerLogin(String name,String password) {
+    public int managerLogin(String number,String password) {
         SQLiteDatabase db = mHelper.getWritableDatabase();
         int id = 0;
-        String sql="select * from db_manager where m_name=? and m_password=?";
-        Cursor cursor=db.rawQuery(sql, new String[]{name,password});
-        if(cursor.moveToFirst()==true){
+        String sql="select * from db_manager where m_number=? and m_password=?";
+        Cursor cursor=db.rawQuery(sql, new String[]{number,password});
+        if(cursor.moveToFirst()){
             id = cursor.getInt(cursor.getColumnIndex("m_id"));
             cursor.close();
             db.close();
@@ -74,23 +80,27 @@ public class ManagerDao {
     /**
      * 根据管理员名查询分类
      */
-    public Manager queryManagerByName(String managerName) {
+    public Manager queryManagerByName(String managerNumber) {
         SQLiteDatabase db = mHelper.getWritableDatabase();
 
         Manager manager = null;
         Cursor cursor = null;
         try {
-            cursor = db.query("db_manager", null, "m_name=?", new String[]{managerName + ""}, null, null, null);
+            cursor = db.query("db_manager", null, "m_number=?", new String[]{managerNumber + ""}, null, null, null);
             while (cursor.moveToNext()) {
                 int managerId = cursor.getInt(cursor.getColumnIndex("m_id"));
+                String managerName = cursor.getString(cursor.getColumnIndex("m_name"));
                 String managerPassword = cursor.getString(cursor.getColumnIndex("m_password"));
                 int managerIsManager = cursor.getInt(cursor.getColumnIndex("m_isManager"));
+                String managerImage = cursor.getString(cursor.getColumnIndex("u_image"));
                 //生成一个类
                 manager = new Manager();
                 manager.setId(managerId);
+                manager.setNumber(managerNumber);
                 manager.setName(managerName);
                 manager.setPassword(managerPassword);
                 manager.setManager(managerIsManager);
+                manager.setImagePath(managerImage);
             }
         } catch (Exception e) {
             e.printStackTrace();
@@ -119,14 +129,18 @@ public class ManagerDao {
             cursor = db.query("db_manager", null, "m_id=?", new String[]{managerId + ""}, null, null, null);
             while (cursor.moveToNext()) {
                 String managerName = cursor.getString(cursor.getColumnIndex("m_name"));
+                String managerNumber = cursor.getString(cursor.getColumnIndex("m_number"));
                 String managerPassword = cursor.getString(cursor.getColumnIndex("m_password"));
                 int managerIsManager = cursor.getInt(cursor.getColumnIndex("m_isManager"));
+                String managerImage = cursor.getString(cursor.getColumnIndex("u_image"));
                 //生成一个类
                 manager = new Manager();
                 manager.setId(managerId);
+                manager.setNumber(managerNumber);
                 manager.setName(managerName);
                 manager.setPassword(managerPassword);
                 manager.setManager(managerIsManager);
+                manager.setImagePath(managerImage);
             }
         } catch (Exception e) {
             e.printStackTrace();
@@ -151,19 +165,19 @@ public class ManagerDao {
         try {
             List<Manager> managerList = queryManagerAll();
             for (Manager manager1 : managerList) {
-                if (manager1.getName() == manager.getName()) {
-                    ToastUtils.show("管理员名已被注册");
+                if (manager1.getName() == manager.getNumber()) {
+                    ToastUtils.show("管理员账号已被注册");
                     return;
                 }
             }
             // 创建管理员表
-            db.execSQL("create table db_manager(m_id integer primary key autoincrement,m_name varchar UNIQUE NOT NULL,"+
-                    "m_password varchar NOT NULL, m_isManager integer)");
             ContentValues values = new ContentValues();
             values.put("m_id", manager.getId());
             values.put("m_name", manager.getName());
+            values.put("m_number",manager.getNumber());
             values.put("m_password", manager.getPassword());
             values.put("m_isManager", 1);
+            values.put("u_image",manager.getImagePath());
             db.insert("db_manager", null, values);
         } catch (Exception e) {
             e.printStackTrace();
@@ -187,8 +201,10 @@ public class ManagerDao {
             ContentValues values = new ContentValues();
             values.put("m_id", manager.getId());
             values.put("m_name", manager.getName());
+            values.put("m_number",manager.getNumber());
             values.put("m_password", manager.getPassword());
             values.put("m_isManager", 1);
+            values.put("u_image",manager.getImagePath());
             db.update("db_user", values, "m_id=?", new String[]{manager.getId() + ""});
         } catch (Exception e) {
             e.printStackTrace();

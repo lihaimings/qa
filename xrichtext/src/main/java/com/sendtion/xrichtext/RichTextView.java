@@ -6,14 +6,17 @@ import android.content.res.TypedArray;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Color;
+import android.net.Uri;
 import android.text.Spannable;
 import android.text.SpannableStringBuilder;
 import android.text.TextUtils;
 import android.text.style.CharacterStyle;
 import android.text.style.ForegroundColorSpan;
 import android.util.AttributeSet;
+import android.util.Log;
 import android.util.TypedValue;
 import android.view.LayoutInflater;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.LinearLayout;
@@ -21,6 +24,11 @@ import android.widget.RelativeLayout;
 import android.widget.ScrollView;
 import android.widget.TextView;
 
+import com.bumptech.glide.Glide;
+import com.youcheyihou.videolib.NiceVideoPlayer;
+import com.youcheyihou.videolib.TxVideoPlayerController;
+
+import java.io.File;
 import java.util.ArrayList;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -44,6 +52,7 @@ public class RichTextView extends ScrollView {
     private OnClickListener btnListener;//图片点击事件
     private ArrayList<String> imagePaths;//图片地址集合
     private String keywords;//关键词高亮
+    public boolean noTouch;
 
     private OnRtImageClickListener onRtImageClickListener;
 
@@ -58,6 +67,8 @@ public class RichTextView extends ScrollView {
     private int rtTextSize = 16; //相当于16sp
     private int rtTextColor = Color.parseColor("#757575");
     private int rtTextLineSpace = 8; //相当于8dp
+
+    public String imagePath ="";
 
     public RichTextView(Context context) {
         this(context, null);
@@ -93,7 +104,7 @@ public class RichTextView extends ScrollView {
         //setupLayoutTransitions();//禁止载入动画
         LayoutParams layoutParams = new LayoutParams(LayoutParams.MATCH_PARENT,
                 LayoutParams.WRAP_CONTENT);
-        allLayout.setPadding(50,15,50,15);//设置间距，防止生成图片时文字太靠边
+        allLayout.setPadding(0,0,0,0);//设置间距，防止生成图片时文字太靠边
         addView(allLayout, layoutParams);
 
         btnListener = new OnClickListener() {
@@ -257,6 +268,39 @@ public class RichTextView extends ScrollView {
         allLayout.addView(imageLayout, index);
     }
 
+    public void addVideoViewAtIndex(final int index, final String videoPath) {
+        if (TextUtils.isEmpty(videoPath)) {
+            return;
+        }
+        try {
+            final LinearLayout videoLayout = createVideoLayout();
+            NiceVideoPlayer niceVideoPlayer = videoLayout.findViewById(R.id.nice_video);
+
+            niceVideoPlayer.setPlayerType(NiceVideoPlayer.TYPE_NATIVE);
+
+            niceVideoPlayer.setUp(videoPath, null);
+
+            niceVideoPlayer.imagePath=imagePath;
+            TxVideoPlayerController controller = new TxVideoPlayerController(getContext());
+            Glide.with(getContext()).load( Uri.fromFile( new File( imagePath ) ) ).into(controller.imageView());
+
+            niceVideoPlayer.setController(controller);
+            allLayout.addView(videoLayout, index);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+    }
+
+    private LinearLayout createVideoLayout() {
+        LinearLayout layout = (LinearLayout) inflater.inflate(
+                R.layout.edit_videoview, null);
+        NiceVideoPlayer niceVideoPlayer = layout.findViewById(R.id.nice_video);
+
+        layout.setTag(viewTagIndex++);
+        return layout;
+    }
+
     /**
      * 根据view的宽度，动态缩放bitmap尺寸
      *
@@ -308,6 +352,47 @@ public class RichTextView extends ScrollView {
         mTransitioner.setDuration(300);
     }
 
+    public boolean isNoTouch;
+    @Override
+    public boolean dispatchTouchEvent(MotionEvent ev) {
+        Log.d("事件","已传递到scrollview");
+        if (isNoTouch){
+            return false;
+        }
+        return super.dispatchTouchEvent(ev);
+    }
+
+    private Callback mCallback;
+
+    public void setCallback(Callback callback) {
+        mCallback = callback;
+    }
+
+
+
+    @Override
+    public boolean onInterceptTouchEvent(MotionEvent ev) {
+        Log.d("事件","已传递到scrollview的Intercept");
+        if (mCallback != null){
+            mCallback.moveEnent();
+        }
+
+        if (noTouch){
+            return false;
+        }
+        return super.onInterceptTouchEvent(ev);
+    }
+
+    @Override
+    public boolean onTouchEvent(MotionEvent ev) {
+        Log.d("事件","已传递到scrollview的TouchEvent");
+        return super.onTouchEvent(ev);
+    }
+
+    public interface Callback{
+        void moveEnent();
+    }
+
     public int getRtImageHeight() {
         return rtImageHeight;
     }
@@ -355,4 +440,5 @@ public class RichTextView extends ScrollView {
     public void setRtTextLineSpace(int rtTextLineSpace) {
         this.rtTextLineSpace = rtTextLineSpace;
     }
+
 }
